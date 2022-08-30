@@ -1,0 +1,11 @@
+
+You have access to the followed options :
+
+'new lead'              -   For creating a new Lead
+'lookup lead'           -   Where you must enter an id of the lead you're locking for
+'show leads'            -   To get a list of all existing leads in the system
+'convert'               -   Where you must type the id of the Lead you want to convert into an Opportunity
+'show opportunities'    -   To get a list of all existing leads in the system
+'close-won'             -   Where you must type the id of the opportunity you want to change the status as won
+'close-lost'            -   Where you must type the id of the opportunity you want to change the status as lost
+'EXIT'                  -   To leave the CRM system

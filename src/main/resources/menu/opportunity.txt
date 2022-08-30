@@ -1,0 +1,14 @@
+An opportunity is a business possibility; is when a lead manifests interest to buy our products, generating an opportunity.
+
+Here, you will find information like:
+- a list of ids;
+- the name of decision makers;
+- the name and quantity of products ordered;
+- the status of opportunity (if it is OPEN or CLOSED_LOST or CLOSED_WON)
+
+Type:
+1 - To view a specific Opportunity
+2 - To view all Opportunities
+3 - To set opportunity status
+Type BACK to back the menu
+Type EXIT to exit the CRM

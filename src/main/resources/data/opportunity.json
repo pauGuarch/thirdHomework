@@ -1,0 +1,82 @@
+[
+  {
+    "id": "536ea839-1fed-4c6d-b4c0-e0c08e935f42",
+    "decisionMaker": {
+      "id": "d9b2493a-798a-4010-9999-e6fc85dcb8a7",
+      "name": "Jane Doe",
+      "email": "aedaew@aewdawed.com",
+      "phoneNumber": "234234234",
+      "companyName": "Jane\u0027s Company"
+    },
+    "quantity": 23,
+    "status": "OPEN",
+    "product": {
+      "id": "3d96627a-4aee-4513-a914-94ef0578b5b1",
+      "productType": "BOX"
+    }
+  },
+  {
+    "id": "8e71d635-9258-450a-8712-95e1a448f58d",
+    "decisionMaker": {
+      "id": "f29e6e86-ddf8-4896-bf91-d91e7fc950f7",
+      "name": "Jon Doe",
+      "email": "apsfjo@jfasof.com",
+      "phoneNumber": "21512525",
+      "companyName": "Jane\u0027s Company"
+    },
+    "quantity": 25,
+    "status": "OPEN",
+    "product": {
+      "id": "6515a9d2-414a-4b34-90a9-d87d93d21de9",
+      "productType": "HYBRID"
+    }
+  },
+  {
+    "id": "7eb77ae2-a389-40da-bbd7-c3d9fb67a8d5",
+    "decisionMaker": {
+      "id": "c4ab230e-14d9-4059-8d26-b6f083bec5ad",
+      "name": "Manolo",
+      "email": "manolo@gmail",
+      "phoneNumber": "212512525",
+      "companyName": "RamonerCompany"
+    },
+    "quantity": 40,
+    "status": "OPEN",
+    "product": {
+      "id": "31601a67-07f3-4944-892e-ca07c1c8f134",
+      "productType": "HYBRID"
+    }
+  },
+  {
+    "id": "ea625c3e-79bd-4a81-80b5-e48e085fd820",
+    "decisionMaker": {
+      "id": "a69d55d8-bb57-4481-9b49-9f311b9147ec",
+      "name": "Silvia",
+      "email": "Fagor",
+      "phoneNumber": "silviafagor@gmail.com",
+      "companyName": "677222444"
+    },
+    "quantity": 40,
+    "status": "OPEN",
+    "product": {
+      "id": "47748c68-07b2-4578-ae64-722da961b765",
+      "productType": "HYBRID"
+    }
+  },
+  {
+    "id": "70d29a80-90d9-4a59-8664-c8e4afc3e485",
+    "decisionMaker": {
+      "id": "7c07462c-fb32-4080-bf42-c9fbdb751e4b",
+      "name": "María",
+      "email": "Ikea",
+      "phoneNumber": "mariavikea@gmail.com",
+      "companyName": "625888444"
+    },
+    "quantity": 10,
+    "status": "CLOSED_LOST",
+    "product": {
+      "id": "47748c68-07b2-4578-ae64-722da961b765",
+      "productType": "HYBRID"
+    }
+  }
+]

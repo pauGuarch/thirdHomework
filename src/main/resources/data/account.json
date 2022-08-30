@@ -1,0 +1,70 @@
+[
+  {
+    "id": "ac35bf4d-0e13-4242-9297-6c56193a4d8c",
+    "industry": "Grupasa",
+    "employeeCount": 22,
+    "city": "Barcelona",
+    "country": "Espein",
+    "contactList": [
+      {
+        "id": "d9b2493a-798a-4010-9999-e6fc85dcb8a7",
+        "name": "Jane Doe",
+        "email": "aedaew@aewdawed.com",
+        "phoneNumber": "234234234",
+        "companyName": "Jane\u0027s Company"
+      }
+    ],
+    "opportunityList": [
+      {
+        "id": "536ea839-1fed-4c6d-b4c0-e0c08e935f42",
+        "decisionMaker": {
+          "id": "d9b2493a-798a-4010-9999-e6fc85dcb8a7",
+          "name": "Jane Doe",
+          "email": "aedaew@aewdawed.com",
+          "phoneNumber": "234234234",
+          "companyName": "Jane\u0027s Company"
+        },
+        "quantity": 23,
+        "status": "OPEN",
+        "product": {
+          "id": "3d96627a-4aee-4513-a914-94ef0578b5b1",
+          "productType": "BOX"
+        }
+      }
+    ]
+  },
+  {
+    "id": "84fc705d-76ba-4785-b5f2-d0ed093a0abc",
+    "industry": "Grupasa",
+    "employeeCount": 44,
+    "city": "Bcn",
+    "country": "Spein",
+    "contactList": [
+      {
+        "id": "f29e6e86-ddf8-4896-bf91-d91e7fc950f7",
+        "name": "Jon Doe",
+        "email": "apsfjo@jfasof.com",
+        "phoneNumber": "21512525",
+        "companyName": "Jane\u0027s Company"
+      }
+    ],
+    "opportunityList": [
+      {
+        "id": "8e71d635-9258-450a-8712-95e1a448f58d",
+        "decisionMaker": {
+          "id": "f29e6e86-ddf8-4896-bf91-d91e7fc950f7",
+          "name": "Jon Doe",
+          "email": "apsfjo@jfasof.com",
+          "phoneNumber": "21512525",
+          "companyName": "Jane\u0027s Company"
+        },
+        "quantity": 25,
+        "status": "OPEN",
+        "product": {
+          "id": "6515a9d2-414a-4b34-90a9-d87d93d21de9",
+          "productType": "HYBRID"
+        }
+      }
+    ]
+  }
+]

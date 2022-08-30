@@ -1,0 +1,30 @@
+[
+  {
+    "id": "d9b2493a-798a-4010-9999-e6fc85dcb8a7",
+    "name": "Jane Doe",
+    "email": "aedaew@aewdawed.com",
+    "phoneNumber": "234234234",
+    "companyName": "Jane\u0027s Company"
+  },
+  {
+    "id": "f29e6e86-ddf8-4896-bf91-d91e7fc950f7",
+    "name": "Jon Doe",
+    "email": "apsfjo@jfasof.com",
+    "phoneNumber": "21512525",
+    "companyName": "Jane\u0027s Company"
+  },
+  {
+    "id": "a69d55d8-bb57-4481-9b49-9f311b9147ec",
+    "name": "Silvia",
+    "email": "Fagor",
+    "phoneNumber": "silviafagor@gmail.com",
+    "companyName": "677222444"
+  },
+  {
+    "id": "7c07462c-fb32-4080-bf42-c9fbdb751e4b",
+    "name": "María",
+    "email": "Ikea",
+    "phoneNumber": "mariavikea@gmail.com",
+    "companyName": "625888444"
+  }
+]

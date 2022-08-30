@@ -1,0 +1,11 @@
+An account is a document to find all the information that you need to close a deal.
+Here is all the information of the Opportunity plus new information like the industry name, the city and the country where the industry is. All these dates generate an account.
+
+Type:
+1 - To manage a specific account
+2 - To access all accounts
+3 - To access a list of contacts
+4 - To access a list of opportunities
+
+Type BACK to back the menu
+Type EXIT to exit the CRM

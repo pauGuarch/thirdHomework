@@ -1,0 +1,9 @@
+In Product, you should access our stock of products.
+It is necessary if you want to know how many products we have to deal with your business.
+
+1 - Search a product by an id
+2 - Search a product by name
+3 - Search a product by type
+
+Type BACK to back the menu
+Type EXIT to exit the CRM
