@@ -3,30 +3,43 @@ package com.ironhack.crm.domain.models;
 import com.ironhack.crm.exceptions.EmptyStringException;
 import com.ironhack.crm.exceptions.IntegerException;
 
-import java.util.List;
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "Leadd")
 public class Lead {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private UUID uuid;
     private String name;
     private String companyName;
     private String email;
     private String phoneNumber;
 
-    public Lead(String name, String companyName, String email, String phoneNumber) {
+    @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
+    private SalesRep salesRep;
+
+    public Lead() {
+    }
+
+    public Lead(String name, String companyName, String email, String phoneNumber, SalesRep salesRep) {
         setId();
         this.name = name;
         this.companyName = companyName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.salesRep = salesRep;
     }
 
 
     public UUID getId() {
-        return id;
+        return uuid;
     }
 
-    public void setId(){this.id = UUID.randomUUID();}
+    public void setId(){this.uuid = UUID.randomUUID();}
 
     public String getName() {
         return name;
@@ -38,6 +51,14 @@ public class Lead {
         }else {
             throw new EmptyStringException();
         }
+    }
+
+    public SalesRep getSalesRep() {
+        return salesRep;
+    }
+
+    public void setSalesRep(SalesRep salesRep) {
+        this.salesRep = salesRep;
     }
 
     public String getCompanyName() {

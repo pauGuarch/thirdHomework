@@ -3,6 +3,7 @@ package com.ironhack.crm.utils;
 import com.ironhack.crm.domain.enums.ProductType;
 import com.ironhack.crm.domain.models.Lead;
 import com.ironhack.crm.domain.models.Product;
+import com.ironhack.crm.domain.models.SalesRep;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -131,8 +132,19 @@ public class UtilsUserInputs {
         return someUUID;
     }
 
-    public static Lead getUserLeadInput(){
-        return new Lead(getLeadNameInput(), getCompanyNameInput(), getLeadEmailInput(), getLeadPhoneNumberInput());
+    public static UUID getGetSalesRepId(){
+        System.out.print("\nPlease input the SalesRep UUID that you want to insert in this Lead: ");
+        Scanner input = new Scanner(System.in);
+        String someUUID = input.nextLine();
+        while(!isUUID(someUUID)){
+            System.out.print("Please input the lead's UUID that you want to insert in this Lead ");
+            someUUID = input.nextLine();
+        }
+        return UUID.fromString(someUUID);
+    }
+
+    public static Lead getUserLeadInput(SalesRep salesRep){
+        return new Lead(getLeadNameInput(), getCompanyNameInput(), getLeadEmailInput(), getLeadPhoneNumberInput(), salesRep);
     }
 
 

@@ -1,16 +1,27 @@
 package com.ironhack.crm.domain.models;
 
 import com.ironhack.crm.exceptions.EmptyStringException;
-import com.ironhack.crm.exceptions.IntegerException;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
 public class Contact {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private UUID uuid;
     private String name;
     private String email;
     private String phoneNumber;
     private String companyName;
+
+    @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
+    private SalesRep salesRepOpportunity;
+
+    public Contact() {
+    }
 
     public Contact(String name, String email, String phoneNumber, String companyName) {
         setId();
@@ -21,11 +32,11 @@ public class Contact {
     }
 
     public UUID getId() {
-        return id;
+        return uuid;
     }
 
     public void setId() {
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
     }
 
     public String getName() {

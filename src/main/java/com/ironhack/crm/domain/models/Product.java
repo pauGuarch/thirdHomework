@@ -1,14 +1,25 @@
 package com.ironhack.crm.domain.models;
 
 import com.ironhack.crm.domain.enums.ProductType;
-import com.ironhack.crm.exceptions.EmptyStringException;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "product")
 public class Product {
 
-    UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private UUID uuid;
+    //TODO change name to type
+    private String name;
+    @Column(name = "type")
     private ProductType productType;
+
+    public Product() {
+    }
 
     public Product(ProductType productType) {
         setId();
@@ -16,11 +27,11 @@ public class Product {
     }
 
     public UUID getId() {
-        return id;
+        return uuid;
     }
 
     public void setId() {
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
     }
 
 

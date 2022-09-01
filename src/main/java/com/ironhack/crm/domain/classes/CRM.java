@@ -50,10 +50,10 @@ public class CRM {
 
 
     public void convertLeadToOpportunity(String leadId, Product product, Integer productQuantity,  String accountIndustry,
-                                         Integer accountEmployees, String accountCity, String accountCountry){
+                                         Integer accountEmployees, String accountCity, String accountCountry, SalesRep salesRep){
         Lead lead = leadManager.lookUpLead(UUID.fromString(leadId));
         Contact contact = new Contact(lead.getName(), lead.getEmail(), lead.getPhoneNumber(), lead.getCompanyName());
-        Opportunity opportunity = new Opportunity(contact, productQuantity, OpportunityStatus.OPEN, product);
+        Opportunity opportunity = new Opportunity(contact, productQuantity, OpportunityStatus.OPEN, product, salesRep);
         List <Contact> contacts = new ArrayList<Contact>();
         contacts.add(contact);
         List <Opportunity> opportunities = new ArrayList<Opportunity>();
@@ -82,6 +82,11 @@ public class CRM {
         }
     }
 
+
+    //TODO implement
+    public SalesRep lookUpSalesRep(UUID uuid){
+        return null;
+    }
 
     public List<Opportunity> checkOpportunities(){
         return opportunityManager.checkOpportunities();

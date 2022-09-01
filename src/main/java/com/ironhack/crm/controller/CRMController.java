@@ -55,7 +55,7 @@
                             switch (key.toLowerCase()){
                                 case "new lead":
                                     System.out.println("\nYou are about to create a new Lead, read carefully the instructions.\n");
-                                    crm.createNewLead(UtilsUserInputs.getUserLeadInput());
+                                    crm.createNewLead(UtilsUserInputs.getUserLeadInput(crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId())));
                                     System.out.println("\n!! Lead created successfully !!\n");
                                     option = "menu-options";
                                     break;
@@ -71,7 +71,7 @@
                                     crm.convertLeadToOpportunity(UtilsUserInputs.getLeadIdInput(),
                                             UtilsUserInputs.createProduct(), UtilsUserInputs.getProductQuantityInput(),
                                             UtilsUserInputs.getAccountIndustryInput(), UtilsUserInputs.getEmployeesNumberInput(),
-                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput());
+                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput(), crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId()));
 
                                     option = "menu-options";
                                 break;
