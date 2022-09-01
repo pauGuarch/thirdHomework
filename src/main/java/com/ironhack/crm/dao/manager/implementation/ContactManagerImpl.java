@@ -40,7 +40,7 @@ public class ContactManagerImpl implements ContactManager {
     public List<Contact> deleteContact(UUID contactId) {
         try {
             Contact contactDel = contacts.stream()
-                    .filter(contact -> contact.getId().equals(contactId)).findFirst().get();
+                    .filter(contact -> contact.getUuid().equals(contactId)).findFirst().get();
             contacts.remove(contactDel);
             writeContactsJSON(contacts);
         } catch (IOException e) {

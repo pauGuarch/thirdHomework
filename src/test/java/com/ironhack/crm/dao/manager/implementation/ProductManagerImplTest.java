@@ -28,8 +28,8 @@ class ProductManagerImplTest {
     void testCreateAndCheckProducts() {
         productManager.createProduct(product1);
         Product productTest = productManager.checkProducts().stream()
-                .filter(product -> product.getId().equals(product1.getId())).findFirst().get();
+                .filter(product -> product.getUuid().equals(product1.getUuid())).findFirst().get();
         assertEquals(ProductType.HYBRID, productTest.getProductType());
-        productManager.removeProduct(product1.getId());
+        productManager.removeProduct(product1.getUuid());
     }
 }

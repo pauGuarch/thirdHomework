@@ -7,15 +7,8 @@ import com.ironhack.crm.domain.models.*;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Utils {
     public static void lookUpOpportunity(Opportunity opportunity){
@@ -180,6 +173,9 @@ public class Utils {
             ex.printStackTrace();
         }
     }
+    public static void writeSalesRepJSON(List<SalesRep> salesReps) throws IOException {
+
+    }
 
     public static void showContacts(List<Contact> contacts) {
 
@@ -193,7 +189,7 @@ public class Utils {
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id, name, email, phoneNumber, companyName);
 
         for (int i = 0; i < contacts.size(); i++) {
-            System.out.format("%-42s %-28s %-30s %-25s %-12s \n", contacts.get(i).getId(), contacts.get(i).getName(), contacts.get(i).getEmail(), contacts.get(i).getPhoneNumber(), contacts.get(i).getCompanyName());
+            System.out.format("%-42s %-28s %-30s %-25s %-12s \n", contacts.get(i).getUuid(), contacts.get(i).getName(), contacts.get(i).getEmail(), contacts.get(i).getPhoneNumber(), contacts.get(i).getCompanyName());
         }
 
     }
@@ -209,7 +205,7 @@ public class Utils {
         System.out.format("%s%55s%31s%24s%32s \n"+"-".repeat(142)+"\n", id, decisionMaker, quantity, status, product);
 
         for (int i = 0; i < opportunities.size(); i++) {
-            System.out.format("%-42s %-28s %-30s %-25s %-12s \n", opportunities.get(i).getId(), opportunities.get(i).getDecisionMaker().getName(), opportunities.get(i).getQuantity(), opportunities.get(i).getStatus(), opportunities.get(i).getProduct());
+            System.out.format("%-42s %-28s %-30s %-25s %-12s \n", opportunities.get(i).getUuid(), opportunities.get(i).getDecisionMaker().getName(), opportunities.get(i).getQuantity(), opportunities.get(i).getStatus(), opportunities.get(i).getProduct());
         }
     }
 
@@ -223,7 +219,7 @@ public class Utils {
 
         for (int i = 0; i < products.size(); i++) {
 
-            System.out.format("%-42s %-28s %-30s \n", products.get(i).getId(), products.get(i).getProductType());
+            System.out.format("%-42s %-28s %-30s \n", products.get(i).getUuid(), products.get(i).getProductType());
 
         }
     }
@@ -238,7 +234,7 @@ public class Utils {
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id,
                 name, company, email, phoneNumber);
         for (int i = 0; i < leads.size(); i++) {
-            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getId().toString(), leads.get(i).getName(),
+            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getUuid().toString(), leads.get(i).getName(),
                     leads.get(i).getCompanyName(), leads.get(i).getEmail(), leads.get(i).getPhoneNumber());
         }
     }
@@ -251,7 +247,7 @@ public class Utils {
         String phoneNumber = "PHONENUMBER";
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id,
                 name, company, email, phoneNumber);
-        System.out.format("%-40s %-27s %-25s %-25s %-12s \n", lead.getId().toString(), lead.getName(),
+        System.out.format("%-40s %-27s %-25s %-25s %-12s \n", lead.getUuid().toString(), lead.getName(),
                     lead.getCompanyName(), lead.getEmail(), lead.getPhoneNumber());
     }
 }

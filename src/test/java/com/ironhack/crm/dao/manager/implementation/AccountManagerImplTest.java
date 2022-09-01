@@ -2,10 +2,7 @@ package com.ironhack.crm.dao.manager.implementation;
 
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.enums.ProductType;
-import com.ironhack.crm.domain.models.Account;
-import com.ironhack.crm.domain.models.Contact;
-import com.ironhack.crm.domain.models.Opportunity;
-import com.ironhack.crm.domain.models.Product;
+import com.ironhack.crm.domain.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,14 +20,16 @@ class AccountManagerImplTest {
     private Account account1;
     private Account account2;
     private Product product;
+
+    private SalesRep salesRep;
     @BeforeEach
     void setUp() {
         accountManager= AccountManagerImpl.getInstance();
         contact = new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany");
-
+        salesRep = new SalesRep("Ramon");
         contacts = new ArrayList<>();
         product = new Product(ProductType.HYBRID);
-        opportunity = new Opportunity(contact,1, OpportunityStatus.OPEN,product);
+        opportunity = new Opportunity(contact,1, OpportunityStatus.OPEN,product,salesRep);
         opportunities = new ArrayList<>();
         opportunities.add(opportunity);
         contacts.add(contact);
@@ -42,9 +41,9 @@ class AccountManagerImplTest {
     void testCreateAndCheckAccount() {
         accountManager.createAccount(account1);
         Account testAccount = accountManager.checkAccounts().stream()
-                        .filter(account -> account.getId().equals(account1.getId())).findFirst().get();
+                        .filter(account -> account.getUuid().equals(account1.getUuid())).findFirst().get();
         assertEquals("IronHack", testAccount.getIndustry());
-        accountManager.deleteAccount(account1.getId());
+        accountManager.deleteAccount(account1.getUuid());
     }
 
     @Test
@@ -54,7 +53,7 @@ class AccountManagerImplTest {
         accountManager.createAccount(account2);
         List<Account> accountList = accountManager.checkAccounts();
         assertEquals(accountList.size(), accountListSize + 2);
-        accountManager.deleteAccount(account1.getId());
-        accountManager.deleteAccount(account2.getId());
+        accountManager.deleteAccount(account1.getUuid());
+        accountManager.deleteAccount(account2.getUuid());
     }
 }
