@@ -1,6 +1,5 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.LeadManager;
-import com.ironhack.crm.domain.models.Account;
 import com.ironhack.crm.domain.models.Lead;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,14 +43,14 @@ public class LeadManagerImpl implements LeadManager {
 
     @Override
     public Lead lookUpLead(UUID leadId) {
-        return leads.stream().filter(l->l.getId().equals(leadId)).findFirst().get();
+        return leads.stream().filter(l->l.getUuid().equals(leadId)).findFirst().get();
     }
 
     @Override
     public List<Lead> removeLead(UUID leadId) {
         try {
             Lead leadDel = leads.stream()
-                    .filter(account -> account.getId().equals(leadId)).findFirst().get();
+                    .filter(account -> account.getUuid().equals(leadId)).findFirst().get();
             leads.remove(leadDel);
             writeLeadsJSON(leads);
         } catch (IOException e) {

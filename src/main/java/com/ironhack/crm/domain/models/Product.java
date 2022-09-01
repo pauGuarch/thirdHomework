@@ -26,7 +26,7 @@ public class Product {
         this.productType = productType;
     }
 
-    public UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 

@@ -26,6 +26,10 @@ public class Opportunity {
     @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRep;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     public Opportunity() {
     }
 
@@ -74,7 +78,7 @@ public class Opportunity {
         this.status = status;
     }
 
-    public UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 

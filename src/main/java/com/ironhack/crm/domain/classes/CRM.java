@@ -1,6 +1,7 @@
 package com.ironhack.crm.domain.classes;
 
 import com.ironhack.crm.dao.manager.AccountManager;
+import com.ironhack.crm.dao.manager.SalesRepManager;
 import com.ironhack.crm.dao.manager.implementation.*;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
@@ -23,17 +24,22 @@ public class CRM {
 
     private ProductManagerImpl productManager;
 
+    private SalesRepManager salesRepManager;
+
     public CRM() {
         accountManager = AccountManagerImpl.getInstance();
         contactManager = ContactManagerImpl.getInstance();
         leadManager = LeadManagerImpl.getInstance();
         opportunityManager = OpportunityManagerImpl.getInstance();
         productManager = ProductManagerImpl.getInstance();
+        salesRepManager = SalesRepManagerImpl.getInstance();
     }
 
     public void createNewLead(Lead lead){
         leadManager.createNewLead(lead);
     }
+
+    public void createNewSalesRep(SalesRep salesRep){salesRepManager.createNewSalesRep(salesRep);}
 
     public List<Lead> checkLeads(){
         return leadManager.checkLeads();
@@ -43,6 +49,9 @@ public class CRM {
         return leadManager.lookUpLead(leadId);
     }
 
+    public SalesRep lookUpSalesRep(UUID uuid){
+        return salesRepManager.lookUpSalesRep(uuid);
+    }
 
     public List<Account> checkAccounts(){
         return accountManager.checkAccounts();
@@ -82,11 +91,6 @@ public class CRM {
         }
     }
 
-
-    //TODO implement
-    public SalesRep lookUpSalesRep(UUID uuid){
-        return null;
-    }
 
     public List<Opportunity> checkOpportunities(){
         return opportunityManager.checkOpportunities();

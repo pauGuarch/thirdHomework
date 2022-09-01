@@ -142,9 +142,21 @@ public class UtilsUserInputs {
         }
         return UUID.fromString(someUUID);
     }
-
     public static Lead getUserLeadInput(SalesRep salesRep){
         return new Lead(getLeadNameInput(), getCompanyNameInput(), getLeadEmailInput(), getLeadPhoneNumberInput(), salesRep);
+    }
+
+    private static String getSalesRepNameInput(){
+        boolean isName = false;
+        String name = "";
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please type the SalesRep's name: ");
+        name = input.nextLine();
+
+        return name;
+    }
+    public static SalesRep getUserSalesRepInput(){
+        return new SalesRep(getSalesRepNameInput());
     }
 
 

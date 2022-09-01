@@ -1,6 +1,5 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.OpportunityManager;
-import com.ironhack.crm.domain.models.Account;
 import com.ironhack.crm.domain.models.Opportunity;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class OpportunityManagerImpl implements OpportunityManager {
     @Override
     public Opportunity lookUpOpportunity(UUID opportunityId) {
         Opportunity opportunity = opportunities.stream()
-                .filter(o -> o.getId().equals(opportunityId)).findFirst().get();
+                .filter(o -> o.getUuid().equals(opportunityId)).findFirst().get();
         return opportunity;
     }
 

@@ -19,11 +19,9 @@ public class Account {
     private Integer employeeCount;
     private String city;
     private String country;
-    @OneToMany
-    @JoinColumn(name = "contact_id")
+    @OneToMany(mappedBy = "accountContact")
     private List<Contact> contactList;
-    @OneToMany
-    @JoinColumn(name = "opportunity_id")
+    @OneToMany(mappedBy = "account")
     private List<Opportunity> opportunityList;
 
 
@@ -40,7 +38,7 @@ public class Account {
         this.opportunityList = opportunityList;
     }
 
-    public UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 
@@ -52,6 +50,9 @@ public class Account {
         return industry;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
     public void setIndustry(String industry) throws EmptyStringException {
         if(!industry.isEmpty()){

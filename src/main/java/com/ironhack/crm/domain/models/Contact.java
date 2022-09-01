@@ -16,9 +16,10 @@ public class Contact {
     private String phoneNumber;
     private String companyName;
 
+
     @ManyToOne
-    @JoinColumn(name = "sales_rep_id")
-    private SalesRep salesRepOpportunity;
+    @JoinColumn(name = "account_id")
+    private Account accountContact;
 
     public Contact() {
     }
@@ -31,7 +32,7 @@ public class Contact {
         this.companyName = companyName;
     }
 
-    public UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 

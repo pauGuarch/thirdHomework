@@ -26,6 +26,7 @@ public class SalesRep {
     }
 
     public SalesRep(String name) {
+        setUuid();
         this.name = name;
     }
 
@@ -36,6 +37,10 @@ public class SalesRep {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public void setUuid() {
+        this.uuid = UUID.randomUUID();
     }
 
     public String getName() {

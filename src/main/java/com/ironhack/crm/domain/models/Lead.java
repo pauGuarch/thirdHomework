@@ -34,8 +34,11 @@ public class Lead {
         this.salesRep = salesRep;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
-    public UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 

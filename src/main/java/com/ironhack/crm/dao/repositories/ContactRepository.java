@@ -1,2 +1,9 @@
-package com.ironhack.crm.dao.repositories;public interface ContactRepository {
+package com.ironhack.crm.dao.repositories;
+
+import com.ironhack.crm.domain.models.Contact;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ContactRepository extends JpaRepository<Contact, Integer> {
 }

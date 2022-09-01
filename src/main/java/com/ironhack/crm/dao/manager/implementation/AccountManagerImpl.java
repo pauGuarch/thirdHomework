@@ -1,7 +1,6 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.AccountManager;
 import com.ironhack.crm.domain.models.Account;
-import com.ironhack.crm.domain.models.Contact;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ public class AccountManagerImpl implements AccountManager {
     public List<Account> deleteAccount(UUID id) {
         try {
             Account accountDel = accounts.stream()
-                    .filter(account -> account.getId().equals(id)).findFirst().get();
+                    .filter(account -> account.getUuid().equals(id)).findFirst().get();
             accounts.remove(accountDel);
             writeAccountsJSON(accounts);
         } catch (IOException e) {
