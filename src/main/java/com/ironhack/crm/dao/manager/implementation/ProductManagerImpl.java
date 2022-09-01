@@ -1,6 +1,5 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.ProductManager;
-import com.ironhack.crm.domain.models.Account;
 import com.ironhack.crm.domain.models.Product;
 
 import java.io.IOException;
@@ -48,7 +47,7 @@ public class ProductManagerImpl implements ProductManager {
     public List<Product> removeProduct(UUID id) {
         try {
             Product productDel = products.stream()
-                    .filter(product -> product.getId().equals(id)).findFirst().get();
+                    .filter(product -> product.getUuid().equals(id)).findFirst().get();
             products.remove(productDel);
             writeProductJSON(products);
         } catch (IOException e) {

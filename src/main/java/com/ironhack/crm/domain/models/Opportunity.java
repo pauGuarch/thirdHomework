@@ -3,22 +3,43 @@ package com.ironhack.crm.domain.models;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.exceptions.IntegerException;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
 public class Opportunity {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private UUID uuid;
+    @OneToOne
+    @JoinColumn(name = "contact_id")
     private Contact decisionMaker;
     private Integer quantity;
+    @Enumerated(value = EnumType.STRING)
     private OpportunityStatus status;
+    @OneToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
+    private SalesRep salesRep;
 
-    public Opportunity(Contact decisionMaker, Integer quantity, OpportunityStatus status, Product product) {
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    public Opportunity() {
+    }
+
+    public Opportunity(Contact decisionMaker, Integer quantity, OpportunityStatus status, Product product, SalesRep salesRep) {
         setId();
         this.decisionMaker = decisionMaker;
         this.quantity = quantity;
         this.status = status;
         this.product = product;
+        this.salesRep = salesRep;
     }
 
     public Contact getDecisionMaker() {
@@ -41,6 +62,14 @@ public class Opportunity {
         }
     }
 
+    public SalesRep getSalesRep() {
+        return salesRep;
+    }
+
+    public void setSalesRep(SalesRep salesRep) {
+        this.salesRep = salesRep;
+    }
+
     public OpportunityStatus getStatus() {
         return status;
     }
@@ -49,12 +78,12 @@ public class Opportunity {
         this.status = status;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public void setId() {
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
     }
 
     public Product getProduct() {

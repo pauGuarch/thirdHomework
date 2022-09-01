@@ -4,20 +4,29 @@ package com.ironhack.crm.domain.models;
 import com.ironhack.crm.exceptions.EmptyStringException;
 import com.ironhack.crm.exceptions.IntegerException;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
 public class Account {
 
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private UUID uuid;
     private String industry;
     private Integer employeeCount;
     private String city;
     private String country;
+    @OneToMany(mappedBy = "accountContact")
     private List<Contact> contactList;
+    @OneToMany(mappedBy = "account")
     private List<Opportunity> opportunityList;
 
+
+    public Account() {
+    }
 
     public Account(String industry, Integer employeeCount, String city, String country, List<Contact> contactList, List<Opportunity> opportunityList) {
         setId();
@@ -29,16 +38,20 @@ public class Account {
         this.opportunityList = opportunityList;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public void setId() {
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
     }
 
     public String getIndustry() {
         return industry;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setIndustry(String industry) throws EmptyStringException {
@@ -83,6 +96,7 @@ public class Account {
         }else {
             throw new EmptyStringException();
         }
+
     }
 
     public List<Contact> getContactList() {

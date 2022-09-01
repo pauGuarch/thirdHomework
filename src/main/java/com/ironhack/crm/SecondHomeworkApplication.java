@@ -13,11 +13,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-
+@SpringBootApplication
 public class SecondHomeworkApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(SecondHomeworkApplication.class, args);
+		SpringApplication.run(SecondHomeworkApplication.class, args);
 		CRMController.runCRM();
 	}
 
