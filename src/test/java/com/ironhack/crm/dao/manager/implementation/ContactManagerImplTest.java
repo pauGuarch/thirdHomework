@@ -16,7 +16,6 @@ class ContactManagerImplTest {
 
     @BeforeEach
     void setUp() {
-        contactManager = ContactManagerImpl.getInstance();
         contact1 = new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany");
         contact2 = new Contact("Rubi", "rubi@gmail", "212512525", "RamonerCompany");
     }

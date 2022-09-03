@@ -6,6 +6,5 @@ import java.util.UUID;
 public interface ProductManager {
     void createProduct(Product product);
     List<Product> checkProducts();
-    List<Product> removeProduct(UUID id);
 
 }

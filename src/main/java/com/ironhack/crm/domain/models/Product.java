@@ -13,7 +13,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private UUID uuid;
-    //TODO change name to type
     private String name;
     @Column(name = "type")
     private ProductType productType;
@@ -21,9 +20,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(ProductType productType) {
+    public Product(String name, ProductType productType) {
         setId();
+        this.name = name;
         this.productType = productType;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public UUID getUuid() {

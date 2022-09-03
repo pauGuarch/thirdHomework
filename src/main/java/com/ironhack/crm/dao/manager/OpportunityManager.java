@@ -6,6 +6,8 @@ import java.util.UUID;
 public interface OpportunityManager {
     void createNewOpportunity(Opportunity lead);
     List<Opportunity> checkOpportunities();
-    Opportunity lookUpOpportunity(UUID opportunityId);
-    List<Opportunity> removeOpportunity(UUID id);
+    Opportunity lookUpOpportunity(Integer id);
+
+    void updateOpportunity(Integer id, int statusId);
+    //List<Opportunity> removeOpportunity(Integer id);
 }

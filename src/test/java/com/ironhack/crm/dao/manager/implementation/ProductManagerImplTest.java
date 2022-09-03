@@ -19,7 +19,6 @@ class ProductManagerImplTest {
 
     @BeforeEach
     void setUp() {
-        productManager = ProductManagerImpl.getInstance();
         product1 = new Product(ProductType.HYBRID);
         product2 = new Product(ProductType.BOX);
     }
@@ -30,6 +29,5 @@ class ProductManagerImplTest {
         Product productTest = productManager.checkProducts().stream()
                 .filter(product -> product.getUuid().equals(product1.getUuid())).findFirst().get();
         assertEquals(ProductType.HYBRID, productTest.getProductType());
-        productManager.removeProduct(product1.getUuid());
     }
 }

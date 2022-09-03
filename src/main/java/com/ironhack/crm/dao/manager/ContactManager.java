@@ -6,5 +6,4 @@ import java.util.UUID;
 public interface ContactManager {
     void createNewContact(Contact contact);
     List<Contact> checkContacts();
-    List<Contact> deleteContact(UUID contactId);
 }

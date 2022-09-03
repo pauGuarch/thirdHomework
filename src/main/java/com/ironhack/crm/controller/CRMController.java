@@ -5,29 +5,31 @@
     import com.ironhack.crm.utils.UtilsUserInputs;
     import com.ironhack.crm.view.CRMView;
     import org.apache.tomcat.util.security.Escape;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
 
+    import javax.annotation.PostConstruct;
     import java.io.IOException;
     import java.util.Scanner;
     import java.util.UUID;
 
-    import static com.ironhack.crm.utils.UtilsUserInputs.validateEmail;
-
+    @Component
     public class CRMController {
-        private static CRMView crmView;
-        private static CRM crm;
+        private CRMView crmView;
+        @Autowired
+        private CRM crm;
 
-        public static void runCRM() {
+        public void runCRM() {
             initializeCRM();
             runWindowsHandler();
         }
 
-        private static void initializeCRM() {
-            crm = new CRM();
+        private void initializeCRM() {
             crmView = new CRMView();
         }
 
 
-        private static void runWindowsHandler() {
+        private void runWindowsHandler() {
             String option = showMenu("menu-options");
             while(!option.equals("EXIT")) {
                 option = showMenu(option);
@@ -35,11 +37,10 @@
             exitCRM();
         }
 
-        private static void exitCRM() {
+        private void exitCRM() {
             System.exit(0);
         }
-
-        private static String showMenu(String menu) {
+        private  String showMenu(String menu) {
             String option = "";
             try {
                 crmView.showMenu(menu);
@@ -48,7 +49,7 @@
                             System.out.println("Please introduce a valid command:");
                             String key = new Scanner(System.in).nextLine();
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
-                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep") && !key.equals("close-lost") && !key.equals("EXIT") && !key.equals("BACK")) {
+                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")&& !key.equals("show salesreps") && !key.equals("close-lost") && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
                             }
@@ -59,6 +60,10 @@
                                     System.out.println("\n!! SalesRep created successfully !!\n");
                                     option = "menu-options";
                                     break;
+                                case "show salesreps":
+                                    Utils.showSalesReps(crm.checkSalesReps());
+                                    option = "menu-options";
+                                    break;
                                 case "new lead":
                                     System.out.println("\nYou are about to create a new Lead, read carefully the instructions.\n");
                                     crm.createNewLead(UtilsUserInputs.getUserLeadInput(crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId())));
@@ -67,7 +72,7 @@
                                     break;
 
                                 case "lookup lead":
-                                    Utils.showLead(crm.lookUpLead(UUID.fromString(UtilsUserInputs.getLeadIdInput())));
+                                    Utils.showLead(crm.lookUpLead(Integer.parseInt(UtilsUserInputs.getLeadIdInput())));
                                     option = "menu-options";
                                     break;
                                 case "show leads":
@@ -78,7 +83,7 @@
                                     crm.convertLeadToOpportunity(UtilsUserInputs.getLeadIdInput(),
                                             UtilsUserInputs.createProduct(), UtilsUserInputs.getProductQuantityInput(),
                                             UtilsUserInputs.getAccountIndustryInput(), UtilsUserInputs.getEmployeesNumberInput(),
-                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput(), crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId()));
+                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput());
 
                                     option = "menu-options";
                                 break;
@@ -110,7 +115,7 @@
             return option;
         }
 
-        private static void clearConsole() {
+        private void clearConsole() {
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }
