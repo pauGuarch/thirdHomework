@@ -12,9 +12,12 @@ public class Opportunity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private UUID uuid;
+
+
     @OneToOne
     @JoinColumn(name = "contact_id")
-    private Contact decisionMaker;
+    private  Contact decisionMaker;
+
     private Integer quantity;
     @Enumerated(value = EnumType.STRING)
     private OpportunityStatus status;
@@ -29,6 +32,7 @@ public class Opportunity {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
+
 
     public Opportunity() {
     }
@@ -60,6 +64,10 @@ public class Opportunity {
         }else {
             throw new IntegerException();
         }
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public SalesRep getSalesRep() {

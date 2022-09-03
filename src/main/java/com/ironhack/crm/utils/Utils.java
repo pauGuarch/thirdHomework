@@ -209,6 +209,15 @@ public class Utils {
         }
     }
 
+    //TODO ponerlo bonito
+    public static void showSalesReps(List<SalesRep> salesRepList) {
+
+        System.out.println("ID   -   UUID    -    Name");
+        for (SalesRep salesRep : salesRepList) {
+            System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
+        }
+    }
+
     public static void showProducts(List<Product> products) {
         StringBuilder product = new StringBuilder();
         String id = "ID";

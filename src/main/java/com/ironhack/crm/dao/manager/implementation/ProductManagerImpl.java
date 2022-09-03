@@ -1,6 +1,9 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.ProductManager;
+import com.ironhack.crm.dao.repositories.ProductRepository;
 import com.ironhack.crm.domain.models.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,52 +12,22 @@ import java.util.UUID;
 
 import static com.ironhack.crm.utils.Utils.*;
 
+@Controller
 public class ProductManagerImpl implements ProductManager {
-    private static ProductManagerImpl productManager;
+    @Autowired
+    private ProductRepository productRepository;
     private List<Product> products;
-
-    private ProductManagerImpl() {
-        this.products = checkProducts();
-        if(products == null){
-            products = new ArrayList<>();
-        }
-    }
-
-    public static ProductManagerImpl getInstance() {
-        if (productManager == null) {
-            productManager = new ProductManagerImpl();
-        }
-        return productManager;
-    }
 
     @Override
     public void createProduct(Product product) {
-        products.add(product);
-        try {
-            writeProductJSON(products);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        checkProducts();
+        productRepository.save(product);
     }
 
     @Override
     public List<Product> checkProducts() {
-        return this.products = readProduct();
+        return productRepository.findAll();
     }
 
-    @Override
-    public List<Product> removeProduct(UUID id) {
-        try {
-            Product productDel = products.stream()
-                    .filter(product -> product.getUuid().equals(id)).findFirst().get();
-            products.remove(productDel);
-            writeProductJSON(products);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        checkProducts();
-        return products;
-    }
+
 
 }

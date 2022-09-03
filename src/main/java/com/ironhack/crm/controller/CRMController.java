@@ -18,7 +18,7 @@
         private CRMView crmView;
         @Autowired
         private CRM crm;
-        @PostConstruct
+
         public void runCRM() {
             initializeCRM();
             runWindowsHandler();
@@ -49,7 +49,7 @@
                             System.out.println("Please introduce a valid command:");
                             String key = new Scanner(System.in).nextLine();
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
-                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep") && !key.equals("close-lost") && !key.equals("EXIT") && !key.equals("BACK")) {
+                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")&& !key.equals("show salesreps") && !key.equals("close-lost") && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
                             }
@@ -60,6 +60,10 @@
                                     System.out.println("\n!! SalesRep created successfully !!\n");
                                     option = "menu-options";
                                     break;
+                                case "show salesreps":
+                                    Utils.showSalesReps(crm.checkSalesReps());
+                                    option = "menu-options";
+                                    break;
                                 case "new lead":
                                     System.out.println("\nYou are about to create a new Lead, read carefully the instructions.\n");
                                     crm.createNewLead(UtilsUserInputs.getUserLeadInput(crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId())));
@@ -68,7 +72,7 @@
                                     break;
 
                                 case "lookup lead":
-                                    Utils.showLead(crm.lookUpLead(UUID.fromString(UtilsUserInputs.getLeadIdInput())));
+                                    Utils.showLead(crm.lookUpLead(Integer.parseInt(UtilsUserInputs.getLeadIdInput())));
                                     option = "menu-options";
                                     break;
                                 case "show leads":
@@ -79,7 +83,7 @@
                                     crm.convertLeadToOpportunity(UtilsUserInputs.getLeadIdInput(),
                                             UtilsUserInputs.createProduct(), UtilsUserInputs.getProductQuantityInput(),
                                             UtilsUserInputs.getAccountIndustryInput(), UtilsUserInputs.getEmployeesNumberInput(),
-                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput(), crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId()));
+                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput());
 
                                     option = "menu-options";
                                 break;

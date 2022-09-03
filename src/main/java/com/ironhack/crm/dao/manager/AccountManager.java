@@ -7,5 +7,5 @@ public interface AccountManager {
     void createAccount(Account account);
     List<Account> checkAccounts();
 
-    List<Account> deleteAccount(UUID id);
+    //List<Account> deleteAccount(UUID id);
 }

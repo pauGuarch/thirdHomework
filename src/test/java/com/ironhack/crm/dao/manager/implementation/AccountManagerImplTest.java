@@ -24,7 +24,6 @@ class AccountManagerImplTest {
     private SalesRep salesRep;
     @BeforeEach
     void setUp() {
-        accountManager= AccountManagerImpl.getInstance();
         contact = new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany");
         salesRep = new SalesRep("Ramon");
         contacts = new ArrayList<>();

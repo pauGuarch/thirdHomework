@@ -103,9 +103,12 @@ public class UtilsUserInputs {
         String productName = null;
         int productTypeIndex = 0;
         boolean isValidEnum = false;
+
+        System.out.println("\nYou are about to create a new Opportunity please read carefully all the steps\n");
+        System.out.println("Please input the name of the product: ");
+        String name = input.nextLine();
         while(!isValidEnum) {
             if(!isValidEnum) {
-                System.out.println("\nYou are about to create a new Opportunity please read carefully all the steps\n");
                 System.out.print("Please input the number of product type you want to choose : 1-BOX, 2-FLATBED, 3-HYBRID : ");
                 try {
                     productTypeIndex = Integer.parseInt(input.nextLine());
@@ -118,29 +121,21 @@ public class UtilsUserInputs {
             }
         }
         ProductType productType = ProductType.values()[productTypeIndex-1];
-        return new Product(productType);
+        return new Product(name, productType);
     }
 
     public static String getLeadIdInput(){
         System.out.print("\nPlease input the lead's UUID that you want to search: ");
         Scanner input = new Scanner(System.in);
         String someUUID = input.nextLine();
-        while(!isUUID(someUUID)){
-            System.out.print("Please input the lead's UUID that you want to search: ");
-            someUUID = input.nextLine();
-        }
         return someUUID;
     }
 
-    public static UUID getGetSalesRepId(){
-        System.out.print("\nPlease input the SalesRep UUID that you want to insert in this Lead: ");
+    public static Integer getGetSalesRepId(){
+        System.out.print("\nPlease input the SalesRep Id that you want to insert in this Lead: ");
         Scanner input = new Scanner(System.in);
         String someUUID = input.nextLine();
-        while(!isUUID(someUUID)){
-            System.out.print("Please input the lead's UUID that you want to insert in this Lead ");
-            someUUID = input.nextLine();
-        }
-        return UUID.fromString(someUUID);
+        return Integer.parseInt(someUUID);
     }
     public static Lead getUserLeadInput(SalesRep salesRep){
         return new Lead(getLeadNameInput(), getCompanyNameInput(), getLeadEmailInput(), getLeadPhoneNumberInput(), salesRep);
@@ -233,13 +228,13 @@ public class UtilsUserInputs {
     }
 
     public static String getOpportunityIdInput() {
-        System.out.print("Please type the Opportunity UUID that you want to change the status: ");
+        System.out.print("Please type the Opportunity Id that you want to change the status: ");
         Scanner input = new Scanner(System.in);
         String someUUID = input.nextLine();
-        while (!isUUID(someUUID)) {
+        /*while (!isUUID(someUUID)) {
             System.out.print("Please type the Opportunity UUID that you want to change the status: ");
                 someUUID = input.nextLine();
-        }
+        }*/
         return someUUID;
     }
 

@@ -1,72 +1,59 @@
 package com.ironhack.crm.dao.manager.implementation;
 import com.ironhack.crm.dao.manager.OpportunityManager;
+import com.ironhack.crm.dao.repositories.OpportunityRepository;
+import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.Opportunity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.ironhack.crm.utils.Utils.*;
 
+@Controller
 public class OpportunityManagerImpl implements OpportunityManager {
-    private static OpportunityManagerImpl opportunityManager;
+
+    @Autowired
+    private OpportunityRepository opportunityRepository;
+
     private List<Opportunity> opportunities;
 
-    private OpportunityManagerImpl() {
-        this.opportunities = checkOpportunities();
-        if (opportunities == null){
-            opportunities = new ArrayList<>();
-        }
-    }
-
-    public static OpportunityManagerImpl getInstance() {
-        if (opportunityManager == null) {
-            opportunityManager = new OpportunityManagerImpl();
-        }
-        return opportunityManager;
-    }
 
     @Override
     public void createNewOpportunity(Opportunity opportunity) {
-        opportunities.add(opportunity);
-        try {
-            writeOpportunityJSON(opportunities);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        checkOpportunities();
+        opportunityRepository.save(opportunity);
     }
 
     @Override
     public List<Opportunity> checkOpportunities() {
-        return this.opportunities = readOpportunities();
+        return opportunityRepository.findAll();
     }
 
     @Override
-    public Opportunity lookUpOpportunity(UUID opportunityId) {
-        Opportunity opportunity = opportunities.stream()
-                .filter(o -> o.getUuid().equals(opportunityId)).findFirst().get();
-        return opportunity;
-    }
-
-    @Override
-    public List<Opportunity> removeOpportunity(UUID id) {
-        try {
-            Opportunity opportunityDel = lookUpOpportunity(id);
-            opportunities.remove(opportunityDel);
-            writeOpportunityJSON(opportunities);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public Opportunity lookUpOpportunity(Integer id) {
+        Optional<Opportunity> opportunityOptional = opportunityRepository.findById((id));
+        if (opportunityOptional.isPresent()){
+            return opportunityOptional.get();
+        }else{
+            throw new RuntimeException();
         }
+    }
+
+    public void updateOpportunity(Integer id, int i) {
+        Opportunity newOpportunity = lookUpOpportunity(id);
+        newOpportunity.setStatus(OpportunityStatus.values()[i]);
+        opportunityRepository.save(newOpportunity);
+    }
+    /*
+    @Override
+    public List<Opportunity> removeOpportunity(Integer id) {
+        opportunityRepository.delete(lookUpOpportunity(id));
         checkOpportunities();
         return opportunities;
-    }
+    }*/
 
-    public List<Opportunity> getOpportunities() {
-        return opportunities;
-    }
-
-    public void setOpportunities(List<Opportunity> opportunities) {
-        this.opportunities = opportunities;
-    }
 }

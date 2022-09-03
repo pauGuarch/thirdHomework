@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface LeadManager {
     void createNewLead(Lead lead);
     List<Lead> checkLeads();
-    Lead lookUpLead(UUID leadId);
-    List<Lead> removeLead(UUID leadId);
+    Lead lookUpLead(Integer leadId);
+    List<Lead> removeLead(Integer leadId);
 }
