@@ -1,18 +1,19 @@
 package com.ironhack.crm.domain.classes;
 
-import com.ironhack.crm.dao.manager.AccountManager;
+import com.ironhack.crm.dao.controllers.interfaces.SalesRepController;
 import com.ironhack.crm.dao.manager.SalesRepManager;
 import com.ironhack.crm.dao.manager.implementation.*;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
-import com.ironhack.crm.controller.CRMController;
 import com.ironhack.crm.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@Component
 public class CRM {
     private AccountManagerImpl accountManager;
 
@@ -23,23 +24,19 @@ public class CRM {
     private OpportunityManagerImpl opportunityManager;
 
     private ProductManagerImpl productManager;
-
-    private SalesRepManager salesRepManager;
+    @Autowired
+    private SalesRepController salesRepController;
 
     public CRM() {
-        accountManager = AccountManagerImpl.getInstance();
-        contactManager = ContactManagerImpl.getInstance();
-        leadManager = LeadManagerImpl.getInstance();
-        opportunityManager = OpportunityManagerImpl.getInstance();
-        productManager = ProductManagerImpl.getInstance();
-        salesRepManager = SalesRepManagerImpl.getInstance();
+
     }
 
     public void createNewLead(Lead lead){
         leadManager.createNewLead(lead);
     }
 
-    public void createNewSalesRep(SalesRep salesRep){salesRepManager.createNewSalesRep(salesRep);}
+    public void createNewSalesRep(SalesRep salesRep){
+        salesRepController.createNewSalesRep(salesRep);}
 
     public List<Lead> checkLeads(){
         return leadManager.checkLeads();
@@ -50,7 +47,7 @@ public class CRM {
     }
 
     public SalesRep lookUpSalesRep(UUID uuid){
-        return salesRepManager.lookUpSalesRep(uuid);
+        return null; //salesRepController.lookUpSalesRep(uuid);
     }
 
     public List<Account> checkAccounts(){

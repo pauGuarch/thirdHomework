@@ -5,29 +5,31 @@
     import com.ironhack.crm.utils.UtilsUserInputs;
     import com.ironhack.crm.view.CRMView;
     import org.apache.tomcat.util.security.Escape;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
 
+    import javax.annotation.PostConstruct;
     import java.io.IOException;
     import java.util.Scanner;
     import java.util.UUID;
 
-    import static com.ironhack.crm.utils.UtilsUserInputs.validateEmail;
-
+    @Component
     public class CRMController {
-        private static CRMView crmView;
-        private static CRM crm;
-
-        public static void runCRM() {
+        private CRMView crmView;
+        @Autowired
+        private CRM crm;
+        @PostConstruct
+        public void runCRM() {
             initializeCRM();
             runWindowsHandler();
         }
 
-        private static void initializeCRM() {
-            crm = new CRM();
+        private void initializeCRM() {
             crmView = new CRMView();
         }
 
 
-        private static void runWindowsHandler() {
+        private void runWindowsHandler() {
             String option = showMenu("menu-options");
             while(!option.equals("EXIT")) {
                 option = showMenu(option);
@@ -35,11 +37,10 @@
             exitCRM();
         }
 
-        private static void exitCRM() {
+        private void exitCRM() {
             System.exit(0);
         }
-
-        private static String showMenu(String menu) {
+        private  String showMenu(String menu) {
             String option = "";
             try {
                 crmView.showMenu(menu);
@@ -110,7 +111,7 @@
             return option;
         }
 
-        private static void clearConsole() {
+        private void clearConsole() {
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }
