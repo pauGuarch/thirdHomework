@@ -27,7 +27,7 @@ class ContactManagerImplTest {
         Contact testContact = contactManager.checkContacts().stream()
                 .filter(contact -> contact.getUuid().equals(contact1.getUuid())).findFirst().get();
         assertEquals("Manolo", testContact.getName());
-        contactManager.deleteContact(contact1.getUuid());
+        //contactManager.deleteContact(contact1.getUuid());
     }
 
 
@@ -38,8 +38,8 @@ class ContactManagerImplTest {
         contactManager.createNewContact(contact2);
         List<Contact> contactList = contactManager.checkContacts();
         assertEquals(contactList.size(), contactListSize + 2);
-        contactManager.deleteContact(contact1.getUuid());
-        contactManager.deleteContact(contact2.getUuid());
+        //contactManager.deleteContact(contact1.getUuid());
+       // contactManager.deleteContact(contact2.getUuid());
     }
 
 

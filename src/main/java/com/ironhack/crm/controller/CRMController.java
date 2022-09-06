@@ -1,6 +1,7 @@
     package com.ironhack.crm.controller;
 
     import com.ironhack.crm.domain.classes.CRM;
+    import com.ironhack.crm.domain.models.Opportunity;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
     import com.ironhack.crm.view.CRMView;
@@ -10,6 +11,7 @@
 
     import javax.annotation.PostConstruct;
     import java.io.IOException;
+    import java.util.List;
     import java.util.Scanner;
     import java.util.UUID;
 
@@ -49,7 +51,9 @@
                             System.out.println("Please introduce a valid command:");
                             String key = new Scanner(System.in).nextLine();
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
-                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")&& !key.equals("show salesreps") && !key.equals("close-lost") && !key.equals("EXIT") && !key.equals("BACK")) {
+                                    && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
+                                    && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
+                                    && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
                             }
@@ -92,12 +96,17 @@
                                     option = "menu-options";
                                 break;
                                 case "close-lost":
-                                    // Made by Pau
                                     crm.editOpportunityStatus(UtilsUserInputs.getOpportunityIdInput(), 3);
                                     option = "menu-options";
-                                break;case "close-won":
-                                    // Made by Pau
+                                break;
+                                case "close-won":
                                     crm.editOpportunityStatus(UtilsUserInputs.getOpportunityIdInput(), 2);
+                                    option = "menu-options";
+                                break;
+                                case "report close-won by salesrep":
+                                    /*List<Opportunity> opportunities =crm.getStatusBySalesRep(UtilsUserInputs.getGetSalesRepId(),1);
+                                    Utils.showOpportunities(opportunities);*/
+                                    //Utils.showSalesRepsByOpportunity(crm.countOpportunitiesByStatusAndSalesRep(crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId()),1));
                                     option = "menu-options";
                                 break;
                             default:

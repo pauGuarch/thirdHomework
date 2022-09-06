@@ -9,5 +9,7 @@ public interface OpportunityManager {
     Opportunity lookUpOpportunity(Integer id);
 
     void updateOpportunity(Integer id, int statusId);
+
+    List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status);
     //List<Opportunity> removeOpportunity(Integer id);
 }

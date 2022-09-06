@@ -108,4 +108,8 @@ public class CRM {
     public List<SalesRep> checkSalesReps() {
         return salesRepManagerImpl.checkSalesReps();
     }
+
+    //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
+    public Long countOpportunitiesByStatusAndSalesRep(SalesRep salesRep, int status) { return opportunityManager.countOpportunitiesByStatusAndSalesRep(salesRep, status);
+    }
 }

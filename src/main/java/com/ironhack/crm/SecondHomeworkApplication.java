@@ -17,15 +17,15 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @SpringBootApplication
-public class SecondHomeworkApplication implements CommandLineRunner {
+public class SecondHomeworkApplication {
 	@Autowired
 	private CRMController crmController;
 	public static void main(String[] args) {
 		SpringApplication.run(SecondHomeworkApplication.class, args);
 	}
 
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		crmController.runCRM();
-	}
+	}*/
 }
