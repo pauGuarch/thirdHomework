@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
 @Component
 public class CRM {
     @Autowired
@@ -110,6 +110,6 @@ public class CRM {
     }
 
     //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
-    public Long countOpportunitiesByStatusAndSalesRep(SalesRep salesRep, int status) { return opportunityManager.countOpportunitiesByStatusAndSalesRep(salesRep, status);
+    public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
 }

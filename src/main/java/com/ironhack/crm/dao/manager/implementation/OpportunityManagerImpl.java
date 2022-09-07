@@ -50,12 +50,9 @@ public class OpportunityManagerImpl implements OpportunityManager {
         opportunityRepository.save(newOpportunity);
     }
 
-    public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) {
-        return opportunityRepository.findAllBySalesRepIdAndStatus(salesRepId, OpportunityStatus.values()[status]);
-    }
 
-    public Long countOpportunitiesByStatusAndSalesRep(SalesRep salesRep, int status){
-        return opportunityRepository.countAllBySalesRepAndStatus(salesRep.getId(), OpportunityStatus.values()[status]);
+    public Long countBySalesRepIdAndStatus(Integer salesRepId, int status){
+        return opportunityRepository.countBySalesRepIdAndStatus(salesRepId, OpportunityStatus.values()[status]);
     }
     /*
     @Override

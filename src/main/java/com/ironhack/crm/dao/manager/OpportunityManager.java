@@ -1,4 +1,5 @@
 package com.ironhack.crm.dao.manager;
+import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.Opportunity;
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +11,6 @@ public interface OpportunityManager {
 
     void updateOpportunity(Integer id, int statusId);
 
-    List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status);
+    Long countBySalesRepIdAndStatus(Integer salesRepId, int status);
     //List<Opportunity> removeOpportunity(Integer id);
 }

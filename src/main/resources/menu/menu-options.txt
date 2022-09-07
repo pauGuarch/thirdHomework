@@ -1,13 +1,16 @@
 
 You have access to the followed options :
 
-'new salesrep'          -   For creating a new SalesRep
-'new salesreps'         -   To get a list of all existing SaleReps in the system
-'new lead'              -   For creating a new Lead
-'lookup lead'           -   Where you must enter an id of the lead you're locking for
-'show leads'            -   To get a list of all existing leads in the system
-'convert'               -   Where you must type the id of the Lead you want to convert into an Opportunity
-'show opportunities'    -   To get a list of all existing leads in the system
-'close-won'             -   Where you must type the id of the opportunity you want to change the status as won
-'close-lost'            -   Where you must type the id of the opportunity you want to change the status as lost
-'EXIT'                  -   To leave the CRM system
+'new salesrep'                  -   For creating a new SalesRep
+'new salesreps'                 -   To get a list of all existing SaleReps in the system
+'new lead'                      -   For creating a new Lead
+'lookup lead'                   -   Where you must enter an id of the lead you're locking for
+'show leads'                    -   To get a list of all existing leads in the system
+'convert'                       -   Where you must type the id of the Lead you want to convert into an Opportunity
+'show opportunities'            -   To get a list of all existing leads in the system
+'close-won'                     -   Where you must type the id of the opportunity you want to change the status as won
+'close-lost'                    -   Where you must type the id of the opportunity you want to change the status as lost
+'report close-won by salesrep'  -   To find out how many Opportunities have the status Close-Won with an specific SalesRep
+'report close-lost by salesrep' -   To find out how many Opportunities have the status Close-Lost with an specific SalesRep
+'report open by salesrep'       -   To find out how many Opportunities have the status Open with an specific SalesRep
+'EXIT'                          -   To leave the CRM system

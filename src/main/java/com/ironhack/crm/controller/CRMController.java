@@ -1,19 +1,14 @@
     package com.ironhack.crm.controller;
 
     import com.ironhack.crm.domain.classes.CRM;
-    import com.ironhack.crm.domain.models.Opportunity;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
     import com.ironhack.crm.view.CRMView;
-    import org.apache.tomcat.util.security.Escape;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Component;
 
-    import javax.annotation.PostConstruct;
     import java.io.IOException;
-    import java.util.List;
     import java.util.Scanner;
-    import java.util.UUID;
 
     @Component
     public class CRMController {
@@ -44,6 +39,7 @@
         }
         private  String showMenu(String menu) {
             String option = "";
+            Integer salesRepId;
             try {
                 crmView.showMenu(menu);
                     switch (menu) {
@@ -53,6 +49,7 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
+                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -104,9 +101,18 @@
                                     option = "menu-options";
                                 break;
                                 case "report close-won by salesrep":
-                                    /*List<Opportunity> opportunities =crm.getStatusBySalesRep(UtilsUserInputs.getGetSalesRepId(),1);
-                                    Utils.showOpportunities(opportunities);*/
-                                    //Utils.showSalesRepsByOpportunity(crm.countOpportunitiesByStatusAndSalesRep(crm.lookUpSalesRep(UtilsUserInputs.getGetSalesRepId()),1));
+                                    salesRepId = UtilsUserInputs.getGetSalesRepId();
+                                    Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),1 ,crm.countByStatusAndSalesRep(salesRepId, 1));
+                                    option = "menu-options";
+                                break;
+                                case "report close-lost by salesrep":
+                                    salesRepId = UtilsUserInputs.getGetSalesRepId();
+                                    Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),2 ,crm.countByStatusAndSalesRep(salesRepId, 2));
+                                    option = "menu-options";
+                                break;
+                                case "report open by salesrep":
+                                    salesRepId = UtilsUserInputs.getGetSalesRepId();
+                                    Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
                                     option = "menu-options";
                                 break;
                             default:

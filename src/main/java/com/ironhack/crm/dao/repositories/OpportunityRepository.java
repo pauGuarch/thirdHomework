@@ -12,7 +12,5 @@ import java.util.UUID;
 public interface OpportunityRepository extends JpaRepository<Opportunity, Integer> {
     Opportunity findByUuid(UUID opportunityId);
 
-    List<Opportunity> findAllBySalesRepIdAndStatus(Integer salesRepId, OpportunityStatus status);
-
-    Long countAllBySalesRepAndStatus(Integer salesRepId, OpportunityStatus status);
+    Long countBySalesRepIdAndStatus(Integer salesRepId, OpportunityStatus status);
 }

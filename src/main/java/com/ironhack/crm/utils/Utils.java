@@ -260,6 +260,10 @@ public class Utils {
         System.out.format("%-40s %-27s %-25s %-25s %-12s \n", lead.getUuid().toString(), lead.getName(),
                     lead.getCompanyName(), lead.getEmail(), lead.getPhoneNumber());
     }
+
+    public static void showSalesRepsAndStatus(SalesRep salesRep, int status, Long count) {
+        System.out.println("\nThe SalesRep " + salesRep.getName() + " have " + count + " Opportunities with the status " + OpportunityStatus.values()[status] + "\n");
+    }
     /*
     public static void showSalesRepsByOpportunity(Long opportunities, int status) {
         System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());

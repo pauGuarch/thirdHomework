@@ -38,7 +38,7 @@ class OpportunityRepositoryTest {
     @BeforeEach
     void setUp() {
         contact1 = contactRepository.save(new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany"));
-        product = productRepository.save(new Product("Julian", ProductType.HYBRID));
+        product = productRepository.save(new Product("Julian3", ProductType.HYBRID));
         salesRep = salesRepRepository.save(new SalesRep("JrRep"));
         opportunity1 = opportunityRepository.save(new Opportunity(contact1, 40, OpportunityStatus.CLOSED_WON, product, salesRep));
         opportunity2 = opportunityRepository.save(new Opportunity(contact1, 40, OpportunityStatus.CLOSED_WON, product, salesRep));
@@ -53,17 +53,11 @@ class OpportunityRepositoryTest {
         salesRepRepository.delete(salesRep);
     }
 
-    @Test
-    void findAllBySalesRepIdAndStatusTest() {
-        List<Opportunity> opportunity = opportunityRepository.findAllBySalesRepIdAndStatus(salesRep.getId(), opportunity1.getStatus());
-        System.out.println("SalesRep : " + opportunity.get(0).getSalesRep().getName() + " status : " + opportunity.get(0).getStatus());
-        assertEquals(opportunity.get(0).getSalesRep().getName(), salesRep.getName());
-        assertEquals(opportunity.size(), 2);
-    }
 
     @Test
     void countOpportunitiesByStatusAndSalesRepTest() {
-        Long counts = opportunityRepository.countAllBySalesRepAndStatus(salesRep.getId(), OpportunityStatus.values()[1]);
+        System.out.println("SalesRep ID: " + salesRep.getId());
+        Long counts = opportunityRepository.countBySalesRepIdAndStatus(salesRep.getId(), OpportunityStatus.values()[1]);
         System.out.println("SalesRep : " + salesRep.getName() + " Opportunities Close-Won : " + counts);
         assertEquals(2, counts);
     }
