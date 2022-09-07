@@ -3,6 +3,7 @@ package com.ironhack.crm.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
 
 import java.io.*;
@@ -259,4 +260,13 @@ public class Utils {
         System.out.format("%-40s %-27s %-25s %-25s %-12s \n", lead.getUuid().toString(), lead.getName(),
                     lead.getCompanyName(), lead.getEmail(), lead.getPhoneNumber());
     }
+
+    public static void showSalesRepsAndStatus(SalesRep salesRep, int status, Long count) {
+        System.out.println("\nThe SalesRep " + salesRep.getName() + " have " + count + " Opportunities with the status " + OpportunityStatus.values()[status] + "\n");
+    }
+    /*
+    public static void showSalesRepsByOpportunity(Long opportunities, int status) {
+        System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());
+        System.out.println(" SalesRep " + getSalesRepId);
+    }*/
 }

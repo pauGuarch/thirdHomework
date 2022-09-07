@@ -19,8 +19,8 @@ class ProductManagerImplTest {
 
     @BeforeEach
     void setUp() {
-        product1 = new Product(ProductType.HYBRID);
-        product2 = new Product(ProductType.BOX);
+        product1 = new Product("Ramon", ProductType.HYBRID);
+        product2 = new Product("Ramon", ProductType.BOX);
     }
 
     @Test

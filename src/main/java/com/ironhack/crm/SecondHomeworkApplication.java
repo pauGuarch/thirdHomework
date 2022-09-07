@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @SpringBootApplication
-public class SecondHomeworkApplication implements CommandLineRunner {
+public class SecondHomeworkApplication implements  CommandLineRunner {
 	@Autowired
 	private CRMController crmController;
 	public static void main(String[] args) {

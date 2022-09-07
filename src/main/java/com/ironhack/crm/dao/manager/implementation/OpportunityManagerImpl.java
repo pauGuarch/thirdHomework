@@ -3,6 +3,7 @@ import com.ironhack.crm.dao.manager.OpportunityManager;
 import com.ironhack.crm.dao.repositories.OpportunityRepository;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.Opportunity;
+import com.ironhack.crm.domain.models.SalesRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -47,6 +48,11 @@ public class OpportunityManagerImpl implements OpportunityManager {
         Opportunity newOpportunity = lookUpOpportunity(id);
         newOpportunity.setStatus(OpportunityStatus.values()[i]);
         opportunityRepository.save(newOpportunity);
+    }
+
+
+    public Long countBySalesRepIdAndStatus(Integer salesRepId, int status){
+        return opportunityRepository.countBySalesRepIdAndStatus(salesRepId, OpportunityStatus.values()[status]);
     }
     /*
     @Override

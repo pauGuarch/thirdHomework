@@ -25,7 +25,7 @@ class OpportunityManagerImplTest {
     void setUp() {
         contact1 = new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany");
         contact2 = new Contact("Rubi", "rubi@gmail", "212512525", "RamonerCompany");
-        product = new Product(ProductType.HYBRID);
+        product = new Product("Juli", ProductType.HYBRID);
         salesRep = new SalesRep();
         opportunity1 = new Opportunity(contact1, 40, OpportunityStatus.OPEN, product, salesRep);
         opportunity2 = new Opportunity(contact2, 10, OpportunityStatus.CLOSED_LOST, product, salesRep);
