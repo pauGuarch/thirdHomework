@@ -38,6 +38,30 @@ public class Utils {
 
     }
 
+    public static boolean validateNewAccountCommand(String command){
+        boolean isCommand= false;
+        try {
+            if(command.substring(0, 3).equalsIgnoreCase("new")){
+               isCommand = true;
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("");
+        }
+        return isCommand;
+    }
+
+    public static boolean validateSelectAccountCommand(String command){
+        boolean isCommand= false;
+        try {
+            if(command.equalsIgnoreCase("select")){
+               isCommand = true;
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("error sselect");
+        }
+        return isCommand;
+    }
+
     //Returns the number introduced by the customer within the command. If command is not valid returns 0.
     public static int validateLookUpOpportunityCmd(String command){
         int id=0;

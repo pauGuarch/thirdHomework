@@ -29,7 +29,8 @@ public class Opportunity {
     @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRep;
 
-    @ManyToOne
+    //@Embedded
+    @OneToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
@@ -101,6 +102,9 @@ public class Opportunity {
     public void setProduct(Product product) {
         this.product = product;
     }
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public boolean close(OpportunityStatus status){
         if (status == OpportunityStatus.CLOSED_LOST || status == OpportunityStatus.CLOSED_WON){
@@ -110,6 +114,8 @@ public class Opportunity {
             return false;
         }
     }
+
+
 
 
     public boolean close(){

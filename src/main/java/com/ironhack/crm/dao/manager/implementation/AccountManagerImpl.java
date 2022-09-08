@@ -24,11 +24,19 @@ public class AccountManagerImpl implements AccountManager {
         checkAccounts();
     }
 
+    public Account getAccount(String uuid){
+        return null;
+    }
 
     @Override
     public List<Account> checkAccounts() {
         return accountRepository.findAll();
     }
+
+    public Account getAccount(Integer id){
+        return accountRepository.findById(id).get();
+    }
+
 
     /*
     @Override
