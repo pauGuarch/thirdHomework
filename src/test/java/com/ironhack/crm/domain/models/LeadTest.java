@@ -2,9 +2,7 @@ package com.ironhack.crm.domain.models;
 import com.ironhack.crm.exceptions.EmptyStringException;
 import com.ironhack.crm.exceptions.IntegerException;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class LeadTest {
 
@@ -59,5 +57,4 @@ public class LeadTest {
         Lead leadTest = new Lead();
         assertThrows(EmptyStringException.class, () -> leadTest.setPhoneNumber(""));
     }
-
 }
