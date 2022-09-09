@@ -1,5 +1,4 @@
 package com.ironhack.crm.domain.models;
-
 import com.ironhack.crm.exceptions.EmptyStringException;
 import com.ironhack.crm.exceptions.IntegerException;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,24 +11,24 @@ class AccountTest {
     Account accountTest = new Account();
 
     @Test
-    void setIndustryWithValue() throws EmptyStringException {
+    void setIndustryWithValueTest() throws EmptyStringException {
       accountTest.setIndustry("Tech");
       assertEquals("Tech", accountTest.getIndustry());
     }
 
     @Test
-    void setIndustryWithNoValue() {
+    void setIndustryWithNoValueTest() {
         assertThrows(EmptyStringException.class, () -> accountTest.setIndustry(""));
     }
 
     @Test
-    void setEmployeeCount() throws IntegerException {
+    void setEmployeeCountTest() throws IntegerException {
         accountTest.setEmployeeCount(12);
         assertEquals(12, accountTest.getEmployeeCount());
     }
 
     @Test
-    void setEmployeeCountException() throws IntegerException {
+    void setEmployeeCountExceptionTest() throws IntegerException {
        assertThrows(IntegerException.class, () -> accountTest.setEmployeeCount(-1));
     }
 
@@ -45,12 +44,12 @@ class AccountTest {
     }
 
     @Test
-    void setCountry() throws EmptyStringException {
+    void setCountryTest() throws EmptyStringException {
         accountTest.setCountry("México");
         assertEquals("México", accountTest.getCountry());
     }
     @Test
-    void setCountryIsNotValid() throws EmptyStringException {
+    void setCountryIsNotValidTest() throws EmptyStringException {
         assertThrows(EmptyStringException.class, () -> accountTest.setCountry(""));
     }
 }
