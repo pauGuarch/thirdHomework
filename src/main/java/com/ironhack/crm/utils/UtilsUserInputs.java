@@ -203,6 +203,13 @@ public class UtilsUserInputs {
         return companyName;
     }
 
+    public static String getProductName() {
+        String productName = "";
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please type the product name: ");
+        productName = input.nextLine();
+        return productName;
+    }
     private static String getLeadEmailInput(){
         boolean isEmail = false;
         String email = "";

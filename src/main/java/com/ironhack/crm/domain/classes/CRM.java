@@ -1,7 +1,6 @@
 package com.ironhack.crm.domain.classes;
 
 import com.ironhack.crm.dao.manager.implementation.*;
-import com.ironhack.crm.dao.repositories.AccountRepository;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
 import com.ironhack.crm.utils.Utils;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class CRM {
@@ -140,5 +138,15 @@ public class CRM {
 
     //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
+    }
+
+    public Long getOpportunitiesByProductName(String product) {
+        return opportunityManager.countOpportunitiesByProductName(product);
+    }
+
+
+    public Long countOpportunitiesByStatusAndProductName(OpportunityStatus status, String productName) {
+
+        return opportunityManager.countOpportunitiesByStatusAndProductName(status, productName);
     }
 }

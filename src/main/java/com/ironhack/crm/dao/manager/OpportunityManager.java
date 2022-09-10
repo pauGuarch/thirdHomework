@@ -13,4 +13,6 @@ public interface OpportunityManager {
 
     Long countBySalesRepIdAndStatus(Integer salesRepId, int status);
     //List<Opportunity> removeOpportunity(Integer id);
+
+
 }

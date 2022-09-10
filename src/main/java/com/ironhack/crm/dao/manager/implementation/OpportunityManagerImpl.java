@@ -3,17 +3,11 @@ import com.ironhack.crm.dao.manager.OpportunityManager;
 import com.ironhack.crm.dao.repositories.OpportunityRepository;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.Opportunity;
-import com.ironhack.crm.domain.models.SalesRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
-import static com.ironhack.crm.utils.Utils.*;
 
 @Controller
 public class OpportunityManagerImpl implements OpportunityManager {
@@ -61,5 +55,14 @@ public class OpportunityManagerImpl implements OpportunityManager {
         checkOpportunities();
         return opportunities;
     }*/
+
+    public Long countOpportunitiesByProductName(String product) {
+        return opportunityRepository.countByProductName(product);
+    }
+
+    public Long countOpportunitiesByStatusAndProductName(OpportunityStatus status, String product) {
+        return opportunityRepository.countByStatusAndProductName(status, product);
+    }
+
 
 }

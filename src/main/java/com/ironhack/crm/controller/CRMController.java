@@ -1,7 +1,7 @@
     package com.ironhack.crm.controller;
 
-    import com.ironhack.crm.dao.manager.implementation.AccountManagerImpl;
     import com.ironhack.crm.domain.classes.CRM;
+    import com.ironhack.crm.domain.enums.OpportunityStatus;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
     import com.ironhack.crm.view.CRMView;
@@ -41,6 +41,7 @@
         private  String showMenu(String menu) {
             String option = "";
             Integer salesRepId;
+            String productName;
             try {
                 crmView.showMenu(menu);
                     switch (menu) {
@@ -51,10 +52,14 @@
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
                                     && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
+                                    && !key.equals("report CLOSED_WON by the product") && !key.equals("report CLOSED_LOST by the product")
+                                    && !key.equals("report OPEN by the product")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
                             }
+
+
                             switch (key.toLowerCase()){
                                 case "new salesrep":
                                     System.out.println("\nYou are about to create a new SalesRep, read carefully the instructions.\n");
@@ -96,28 +101,58 @@
                                     }
                                     option = "menu-options";
                                 break;
+
                                 case "show opportunities":
                                     Utils.showOpportunities(crm.checkOpportunities());
                                     option = "menu-options";
                                 break;
+
+                                case "report opportunities by the product":
+                                    productName = UtilsUserInputs.getProductName();
+                                    Utils.showOpportunitiesByTheProduct(crm.getOpportunitiesByProductName(productName), productName);
+                                    option = "menu-options";
+                                break;
+
+                                case "report closed_won by the product":
+                                    productName = UtilsUserInputs.getProductName();
+                                    Utils.showClosedWonByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.CLOSED_WON, productName), productName);
+                                    option = "menu-options";
+                                break;
+
+                                case "report closed_lost by the product":
+                                    productName = UtilsUserInputs.getProductName();
+                                    Utils.showClosedLostByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.CLOSED_LOST, productName), productName);
+                                    option = "menu-options";
+                                break;
+
+                                case "report open by the product":
+                                    productName = UtilsUserInputs.getProductName();
+                                    Utils.showOpenByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.OPEN, productName), productName);
+                                    option = "menu-options";
+                                break;
+
                                 case "close-lost":
                                     crm.editOpportunityStatus(UtilsUserInputs.getOpportunityIdInput(), 3);
                                     option = "menu-options";
                                 break;
+
                                 case "close-won":
                                     crm.editOpportunityStatus(UtilsUserInputs.getOpportunityIdInput(), 2);
                                     option = "menu-options";
                                 break;
+
                                 case "report close-won by salesrep":
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),1 ,crm.countByStatusAndSalesRep(salesRepId, 1));
                                     option = "menu-options";
                                 break;
+
                                 case "report close-lost by salesrep":
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),2 ,crm.countByStatusAndSalesRep(salesRepId, 2));
                                     option = "menu-options";
                                 break;
+
                                 case "report open by salesrep":
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
