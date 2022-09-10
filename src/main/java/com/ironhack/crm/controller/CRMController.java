@@ -16,6 +16,7 @@
         private CRMView crmView;
         @Autowired
         private CRM crm;
+        private Long count;
 
         public void runCRM() {
             initializeCRM();
@@ -50,7 +51,8 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
+                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") &&
+                                    !key.equals("mean employee count") && !key.equals("max employee count") && !key.equals("min employee count")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -122,7 +124,26 @@
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
                                     option = "menu-options";
+                                    break;
+                                    case "mean employee count":
+                                        count = crm.getAccountsEmployeesMean();
+                                        System.out.println("\nThe mean of employees in all the accounts is: ");
+                                        System.out.println(count);
+                                    option = "menu-options";
                                 break;
+                                case "max employee count":
+                                        count = crm.getAccountsEmployeesMax();
+                                        System.out.println("\nThe maximum of employees in all the accounts is: ");
+                                        System.out.println(count);
+                                    option = "menu-options";
+                                break;
+                                case "min employee count":
+                                        count = crm.getAccountsEmployeesMin();
+                                        System.out.println("\nThe minimum of employees in all the accounts is: ");
+                                        System.out.println(count);
+                                    option = "menu-options";
+                                break;
+
                             default:
                                 option = key;
                             }
