@@ -15,7 +15,13 @@ public interface OpportunityManager {
 
     Long countBySalesRepIdAndStatus(Integer salesRepId, int status);
 
+
+    Long getMeanQuantity();
+
+    Long getMaxQuantity();
+
     List<Opportunity> getOpportunitiesBySalesRep(Integer id);
+
     //List<Opportunity> removeOpportunity(Integer id);
 
 

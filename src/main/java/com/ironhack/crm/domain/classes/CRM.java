@@ -2,7 +2,6 @@ package com.ironhack.crm.domain.classes;
 
 import com.ironhack.crm.dao.manager.AccountManager;
 import com.ironhack.crm.dao.manager.implementation.*;
-import com.ironhack.crm.dao.repositories.AccountRepository;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
 import com.ironhack.crm.utils.Utils;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class CRM {
@@ -143,6 +141,17 @@ public class CRM {
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
 
+    public Long meanQuantity() {
+        return opportunityManager.getMeanQuantity();
+    }
+
+    public Long maxQuantity() {
+        return opportunityManager.getMaxQuantity();
+    }
+
+    public Long minQuantity() {
+        return opportunityManager.getMinQuantity();
+
     public Long getAccountsEmployeesMean(){
         return accountManager.getAccountsEmployeesMean();
     }
@@ -151,5 +160,6 @@ public class CRM {
     }
     public Long getAccountsEmployeesMin(){
         return accountManager.getAccountsEmployeesMin();
+
     }
 }

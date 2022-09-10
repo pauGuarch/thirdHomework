@@ -1,6 +1,5 @@
     package com.ironhack.crm.controller;
 
-    import com.ironhack.crm.dao.manager.implementation.AccountManagerImpl;
     import com.ironhack.crm.domain.classes.CRM;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
@@ -51,6 +50,8 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
+                                    && !key.equals("mean quantity")  && !key.equals("min quantity")
+                                    && !key.equals("max quantity")
                                     && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") &&
                                     !key.equals("mean employee count") && !key.equals("max employee count") && !key.equals("min employee count")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
@@ -135,6 +136,19 @@
                                         count = crm.getAccountsEmployeesMax();
                                         System.out.println("\nThe maximum of employees in all the accounts is: ");
                                         System.out.println(count);
+                                    option = "menu-options";
+                                break;
+
+                                case "mean quantity":
+                                    Utils.showQuantityCount(crm.meanQuantity(), "Mean");
+                                    option = "menu-options";
+                                break;
+                                case "max quantity":
+                                    Utils.showQuantityCount(crm.maxQuantity(), "Max");
+                                    option = "menu-options";
+                                break;
+                                case "min quantity":
+                                    Utils.showQuantityCount(crm.minQuantity(), "Min");
                                     option = "menu-options";
                                 break;
                                 case "min employee count":
