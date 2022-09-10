@@ -97,6 +97,7 @@ public class Account {
         }else {
             throw new EmptyStringException();
         }
+
     }
 
     public List<Contact> getContactList() {
