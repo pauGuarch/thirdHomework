@@ -297,9 +297,26 @@ public class Utils {
         System.out.println("\nThe SalesRep " + salesRep.getName() + " have " + count + " Opportunities with the status " + OpportunityStatus.values()[status] + "\n");
     }
 
+    public static void showOpportunitiesByTheProduct(Long countOpportunities, String productName) {
+        System.out.println("\n The product " + productName + " have " + countOpportunities + " opportunities \n");
+    }
+
+    public static void showClosedWonByTheProduct(Long countClosedWon, String productName) {
+    System.out.println("\n The product " + productName + " have " + countClosedWon + " opportunities with CLOSE_WON status");
+    }
+
+    public static void showClosedLostByTheProduct(Long countClosedLost, String productName) {
+        System.out.println("\n The product " + productName + " have " + countClosedLost + " opportunities with CLOSE_LOST status");
+    }
+
+    public static void showOpenByTheProduct(Long countOpen, String productName) {
+        System.out.println("\n The product " + productName + " have " + countOpen + " opportunities with OPEN status");
+    }
+
     public static void showQuantityCount(Long quantity, String request) {
         System.out.println("\nThe " + request + " quantity of products is " + quantity + "\n");
     }
+
     /*
     public static void showSalesRepsByOpportunity(Long opportunities, int status) {
         System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());

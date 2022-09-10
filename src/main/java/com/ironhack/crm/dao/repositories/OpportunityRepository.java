@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -14,6 +13,11 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
     Opportunity findByUuid(UUID opportunityId);
 
     Long countBySalesRepIdAndStatus(Integer salesRepId, OpportunityStatus status);
+
+
+    Long countByProductName(String productName);
+
+    Long countByStatusAndProductName(OpportunityStatus status, String productName);
 
     @Query("SELECT AVG(quantity) FROM Opportunity")
     Long meanQuantity();
@@ -23,7 +27,6 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
 
     @Query("SELECT MIN(quantity) FROM Opportunity")
     Long getMinQuantity();
-}
 
     List<Opportunity> findOpportunityBySalesRepId(Integer id);
 }

@@ -140,7 +140,7 @@ public class CRM {
     //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
-
+    
     public Long meanQuantity() {
         return opportunityManager.getMeanQuantity();
     }
@@ -161,5 +161,12 @@ public class CRM {
     public Long getAccountsEmployeesMin(){
         return accountManager.getAccountsEmployeesMin();
 
+    public Long getOpportunitiesByProductName(String product) {
+        return opportunityManager.countOpportunitiesByProductName(product);
+    }
+
+
+    public Long countOpportunitiesByStatusAndProductName(OpportunityStatus status, String productName) {
+        return opportunityManager.countOpportunitiesByStatusAndProductName(status, productName);
     }
 }
