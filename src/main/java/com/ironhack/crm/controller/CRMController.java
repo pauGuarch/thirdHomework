@@ -52,7 +52,6 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
                                     && !key.equals("report CLOSED_WON by the product") && !key.equals("report CLOSED_LOST by the product")
                                     && !key.equals("report OPEN by the product")
                                     && !key.equals("mean quantity")  && !key.equals("min quantity")  && !key.equals("max quantity")
