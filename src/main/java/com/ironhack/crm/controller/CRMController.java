@@ -50,7 +50,7 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
+                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") &&!key.equals("report opportunity by salesrep")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -122,8 +122,14 @@
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
                                     option = "menu-options";
+                                    break;
+                                case "report opportunity by salesrep":
+                                    System.out.println("\nYou are about to get a opportunities by its SalesRep");
+                                    Utils.showOpportunities(crm.getOpportunitiesBySalesRep(UtilsUserInputs.getGetSalesRepId()));
+                                    option = "menu-options";
                                 break;
-                            default:
+
+                                default:
                                 option = key;
                             }
                             clearConsole();
