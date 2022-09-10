@@ -67,6 +67,12 @@ public class OpportunityManagerImpl implements OpportunityManager {
         return opportunityRepository.getMinQuantity();
     }
 
+
+    @Override
+    public List<Opportunity> getOpportunitiesBySalesRep(Integer id) {
+        return opportunityRepository.findOpportunityBySalesRepId(id);
+    }
+
     /*
     @Override
     public List<Opportunity> removeOpportunity(Integer id) {
@@ -74,5 +80,6 @@ public class OpportunityManagerImpl implements OpportunityManager {
         checkOpportunities();
         return opportunities;
     }*/
+
 
 }

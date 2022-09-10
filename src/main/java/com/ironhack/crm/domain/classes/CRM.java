@@ -1,5 +1,6 @@
 package com.ironhack.crm.domain.classes;
 
+import com.ironhack.crm.dao.manager.AccountManager;
 import com.ironhack.crm.dao.manager.implementation.*;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
@@ -150,5 +151,15 @@ public class CRM {
 
     public Long minQuantity() {
         return opportunityManager.getMinQuantity();
+
+    public Long getAccountsEmployeesMean(){
+        return accountManager.getAccountsEmployeesMean();
+    }
+    public Long getAccountsEmployeesMax(){
+        return accountManager.getAccountsEmployeesMax();
+    }
+    public Long getAccountsEmployeesMin(){
+        return accountManager.getAccountsEmployeesMin();
+
     }
 }

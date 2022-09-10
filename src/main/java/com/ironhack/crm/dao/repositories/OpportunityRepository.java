@@ -24,3 +24,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
     @Query("SELECT MIN(quantity) FROM Opportunity")
     Long getMinQuantity();
 }
+
+    List<Opportunity> findOpportunityBySalesRepId(Integer id);
+}
+
