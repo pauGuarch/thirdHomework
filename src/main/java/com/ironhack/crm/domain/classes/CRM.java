@@ -93,6 +93,10 @@ public class CRM {
         return opportunityManager.checkOpportunities();
     }
 
+    public List<Opportunity> getOpportunitiesBySalesRep(Integer id) {
+        return opportunityManager.getOpportunitiesBySalesRep(id);
+    }
+
     public Opportunity lookUpOpportunity(Integer id){
         return opportunityManager.lookUpOpportunity(id);
     }
@@ -112,4 +116,5 @@ public class CRM {
     //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
+
 }

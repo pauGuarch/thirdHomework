@@ -212,10 +212,18 @@ public class Utils {
 
     //TODO ponerlo bonito
     public static void showSalesReps(List<SalesRep> salesRepList) {
+        StringBuilder salesReps = new StringBuilder();
+        String id = "ID";
+        String name = "NAME";
+        System.out.format("%-43s %-24s \n"+"-".repeat(50)+"\n", id, name);
+        //System.out.println("ID   -   UUID    -    Name");
+        //for (SalesRep salesRep : salesRepList) {
+            //System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
 
-        System.out.println("ID   -   UUID    -    Name");
-        for (SalesRep salesRep : salesRepList) {
-            System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
+        for (int i = 0; i < salesRepList.size(); i++) {
+
+            System.out.format("%-42s %-30s \n", salesRepList.get(i).getId(), salesRepList.get(i).getName());
+
         }
     }
 
@@ -269,4 +277,6 @@ public class Utils {
         System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());
         System.out.println(" SalesRep " + getSalesRepId);
     }*/
+
+
 }
