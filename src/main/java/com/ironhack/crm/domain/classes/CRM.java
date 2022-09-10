@@ -147,4 +147,8 @@ public class CRM {
     public Long maxQuantity() {
         return opportunityManager.getMaxQuantity();
     }
+
+    public Long minQuantity() {
+        return opportunityManager.getMinQuantity();
+    }
 }

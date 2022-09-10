@@ -49,8 +49,8 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep") && !key.equals("mean quantity")
-                                    && !key.equals("report open by salesrep")
+                                    && !key.equals("report close-lost by salesrep") && !key.equals("mean quantity")  && !key.equals("min quantity")
+                                    && !key.equals("max quantity")  && !key.equals("report open by salesrep")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -128,7 +128,11 @@
                                     option = "menu-options";
                                 break;
                                 case "max quantity":
-                                    Utils.showQuantityCount(crm.maxQuantity(), "Mean");
+                                    Utils.showQuantityCount(crm.maxQuantity(), "Max");
+                                    option = "menu-options";
+                                break;
+                                case "min quantity":
+                                    Utils.showQuantityCount(crm.minQuantity(), "Min");
                                     option = "menu-options";
                                 break;
                             default:

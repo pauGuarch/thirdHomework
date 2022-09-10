@@ -17,4 +17,10 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
 
     @Query("SELECT AVG(quantity) FROM Opportunity")
     Long meanQuantity();
+
+    @Query("SELECT MAX(quantity) FROM Opportunity")
+    Long getMaxQuantity();
+
+    @Query("SELECT MIN(quantity) FROM Opportunity")
+    Long getMinQuantity();
 }

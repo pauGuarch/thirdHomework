@@ -60,8 +60,13 @@ public class OpportunityManagerImpl implements OpportunityManager {
     }
 
     public Long getMaxQuantity() {
-        return opportunityRepository.;
+        return opportunityRepository.getMaxQuantity();
     }
+
+    public Long getMinQuantity(){
+        return opportunityRepository.getMinQuantity();
+    }
+
     /*
     @Override
     public List<Opportunity> removeOpportunity(Integer id) {

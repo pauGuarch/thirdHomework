@@ -290,7 +290,7 @@ public class Utils {
     }
 
     public static void showQuantityCount(Long quantity, String request) {
-        System.out.println("The " + request + " is " + quantity);
+        System.out.println("\nThe " + request + " quantity of products is " + quantity + "\n");
     }
     /*
     public static void showSalesRepsByOpportunity(Long opportunities, int status) {
