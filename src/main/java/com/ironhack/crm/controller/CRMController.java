@@ -1,5 +1,6 @@
     package com.ironhack.crm.controller;
 
+    import com.ironhack.crm.dao.manager.implementation.AccountManagerImpl;
     import com.ironhack.crm.domain.classes.CRM;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
@@ -81,11 +82,18 @@
                                     option = "menu-options";
                                     break;
                                 case "convert":
-                                    crm.convertLeadToOpportunity(UtilsUserInputs.getLeadIdInput(),
-                                            UtilsUserInputs.createProduct(), UtilsUserInputs.getProductQuantityInput(),
-                                            UtilsUserInputs.getAccountIndustryInput(), UtilsUserInputs.getEmployeesNumberInput(),
-                                            UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput());
-
+                                    if (UtilsUserInputs.getNewAccount()) {
+                                        try {
+                                            crm.convertLeadToOpportunity(crm.lookUpLead(Integer.parseInt(UtilsUserInputs.getLeadIdInput())),
+                                                    UtilsUserInputs.createProduct(), UtilsUserInputs.getProductQuantityInput(),
+                                                    UtilsUserInputs.getAccountIndustryInput(), UtilsUserInputs.getEmployeesNumberInput(),
+                                                    UtilsUserInputs.getAccountCityInput(), UtilsUserInputs.getAccountCountryInput());
+                                        }catch (RuntimeException e){
+                                            System.out.println("DATA-ERROR(The lead Id that you introduced was not found)");
+                                        }
+                                    }else{
+                                        crm.convertLeadToOpportunity(UtilsUserInputs.getLeadIdInput());
+                                    }
                                     option = "menu-options";
                                 break;
                                 case "show opportunities":

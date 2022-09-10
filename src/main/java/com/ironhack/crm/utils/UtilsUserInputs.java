@@ -1,10 +1,12 @@
 package com.ironhack.crm.utils;
 
+import com.ironhack.crm.dao.manager.implementation.AccountManagerImpl;
 import com.ironhack.crm.domain.enums.ProductType;
 import com.ironhack.crm.domain.models.Lead;
 import com.ironhack.crm.domain.models.Product;
 import com.ironhack.crm.domain.models.SalesRep;
 
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
@@ -108,16 +110,14 @@ public class UtilsUserInputs {
         System.out.println("Please input the name of the product: ");
         String name = input.nextLine();
         while(!isValidEnum) {
-            if(!isValidEnum) {
-                System.out.print("Please input the number of product type you want to choose : 1-BOX, 2-FLATBED, 3-HYBRID : ");
-                try {
-                    productTypeIndex = Integer.parseInt(input.nextLine());
-                    if (productTypeIndex >= 1 && productTypeIndex <= 3) {
-                        isValidEnum = true;
-                    }
-                } catch (NumberFormatException num) {
-
+            System.out.print("Please input the number of product type you want to choose : 1-BOX, 2-FLATBED, 3-HYBRID : ");
+            try {
+                productTypeIndex = Integer.parseInt(input.nextLine());
+                if (productTypeIndex >= 1 && productTypeIndex <= 3) {
+                    isValidEnum = true;
                 }
+            } catch (NumberFormatException num) {
+                System.out.println("The number you enetered is wrong.");
             }
         }
         ProductType productType = ProductType.values()[productTypeIndex-1];
@@ -125,7 +125,13 @@ public class UtilsUserInputs {
     }
 
     public static String getLeadIdInput(){
-        System.out.print("\nPlease input the lead's UUID that you want to search: ");
+        System.out.print("\nPlease input the lead's UUID that you want to select: ");
+        Scanner input = new Scanner(System.in);
+        String someUUID = input.nextLine();
+        return someUUID;
+    }
+    public static String getAccountId(){
+        System.out.print("\nPlease input the account's UUID that you want to select: ");
         Scanner input = new Scanner(System.in);
         String someUUID = input.nextLine();
         return someUUID;
@@ -219,7 +225,7 @@ public class UtilsUserInputs {
         while (!isPhoneNumber) {
             System.out.print("Please type lead's phone number: ");
             phoneNumber = input.nextLine();
-            if (phoneNumber.isEmpty()==false) isPhoneNumber = true;
+            if (!phoneNumber.isEmpty()) isPhoneNumber = true;
             if (!isPhoneNumber) {
                 System.out.print("\nPlease make sure to only type numbers: ");
             }
@@ -258,6 +264,26 @@ public class UtilsUserInputs {
         return opportunityStatusIndex;
     }
 
-
+    public static boolean getNewAccount(){
+        boolean isCommand = false;
+        String command ="";
+        boolean newAccount = true;
+        Scanner input = new Scanner(System.in);
+        while (!isCommand) {
+            command="";
+        System.out.println("Please enter 'new' to create a new account or 'select' to choose from an existing one:");
+            command = input.nextLine();
+            if(Utils.validateSelectAccountCommand(command)){
+                newAccount=false;
+                isCommand=true;
+            }else if(Utils.validateNewAccountCommand(command)){
+                isCommand=true;
+            }
+            if (!isCommand) {
+                System.out.print("\nPlease make sure to enter a valid command.");
+            }
+        }
+        return newAccount;
+    }
 
 }
