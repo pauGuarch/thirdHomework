@@ -170,4 +170,8 @@ public class CRM {
     public Long countOpportunitiesByStatusAndProductName(OpportunityStatus status, String productName) {
         return opportunityManager.countOpportunitiesByStatusAndProductName(status, productName);
     }
+
+    public List<Product> getProducts(){
+        return productManager.checkProducts();
+    }
 }

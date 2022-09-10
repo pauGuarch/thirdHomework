@@ -117,18 +117,21 @@
                                 break;
 
                                 case "report closed_won by the product":
+                                    Utils.showProducts(crm.getProducts());
                                     productName = UtilsUserInputs.getProductName();
                                     Utils.showClosedWonByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.CLOSED_WON, productName), productName);
                                     option = "menu-options";
                                 break;
 
                                 case "report closed_lost by the product":
+                                    Utils.showProducts(crm.getProducts());
                                     productName = UtilsUserInputs.getProductName();
                                     Utils.showClosedLostByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.CLOSED_LOST, productName), productName);
                                     option = "menu-options";
                                 break;
 
                                 case "report open by the product":
+                                    Utils.showProducts(crm.getProducts());
                                     productName = UtilsUserInputs.getProductName();
                                     Utils.showOpenByTheProduct(crm.countOpportunitiesByStatusAndProductName(OpportunityStatus.OPEN, productName), productName);
                                     option = "menu-options";
@@ -198,7 +201,6 @@
                             }
                             clearConsole();
                             break;
-
 
                 }
             } catch (IOException e) {

@@ -261,7 +261,7 @@ public class Utils {
 
         for (int i = 0; i < products.size(); i++) {
 
-            System.out.format("%-42s %-28s %-30s \n", products.get(i).getUuid(), products.get(i).getProductType());
+            System.out.format("%-42s %-28s %-30s \n", products.get(i).getId(), products.get(i).getProductType(), products.get(i).getName());
 
         }
     }

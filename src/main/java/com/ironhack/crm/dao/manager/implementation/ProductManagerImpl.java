@@ -28,6 +28,4 @@ public class ProductManagerImpl implements ProductManager {
         return productRepository.findAll();
     }
 
-
-
 }
