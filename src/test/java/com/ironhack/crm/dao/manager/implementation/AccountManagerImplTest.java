@@ -24,11 +24,10 @@ class AccountManagerImplTest {
     private SalesRep salesRep;
     @BeforeEach
     void setUp() {
-        accountManager= AccountManagerImpl.getInstance();
         contact = new Contact("Manolo", "manolo@gmail", "212512525", "RamonerCompany");
         salesRep = new SalesRep("Ramon");
         contacts = new ArrayList<>();
-        product = new Product(ProductType.HYBRID);
+        product = new Product("Julian",ProductType.HYBRID);
         opportunity = new Opportunity(contact,1, OpportunityStatus.OPEN,product,salesRep);
         opportunities = new ArrayList<>();
         opportunities.add(opportunity);
@@ -43,7 +42,7 @@ class AccountManagerImplTest {
         Account testAccount = accountManager.checkAccounts().stream()
                         .filter(account -> account.getUuid().equals(account1.getUuid())).findFirst().get();
         assertEquals("IronHack", testAccount.getIndustry());
-        accountManager.deleteAccount(account1.getUuid());
+        //accountManager.deleteAccount(account1.getUuid());
     }
 
     @Test
@@ -53,7 +52,7 @@ class AccountManagerImplTest {
         accountManager.createAccount(account2);
         List<Account> accountList = accountManager.checkAccounts();
         assertEquals(accountList.size(), accountListSize + 2);
-        accountManager.deleteAccount(account1.getUuid());
-        accountManager.deleteAccount(account2.getUuid());
+        //accountManager.deleteAccount(account1.getUuid());
+       // accountManager.deleteAccount(account2.getUuid());
     }
 }

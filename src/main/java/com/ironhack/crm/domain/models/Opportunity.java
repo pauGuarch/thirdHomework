@@ -12,9 +12,12 @@ public class Opportunity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private UUID uuid;
+
+
     @OneToOne
     @JoinColumn(name = "contact_id")
-    private Contact decisionMaker;
+    private  Contact decisionMaker;
+
     private Integer quantity;
     @Enumerated(value = EnumType.STRING)
     private OpportunityStatus status;
@@ -26,9 +29,11 @@ public class Opportunity {
     @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRep;
 
-    @ManyToOne
+    //@Embedded
+    @OneToOne
     @JoinColumn(name = "account_id")
     private Account account;
+
 
     public Opportunity() {
     }
@@ -62,6 +67,10 @@ public class Opportunity {
         }
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public SalesRep getSalesRep() {
         return salesRep;
     }
@@ -93,6 +102,9 @@ public class Opportunity {
     public void setProduct(Product product) {
         this.product = product;
     }
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public boolean close(OpportunityStatus status){
         if (status == OpportunityStatus.CLOSED_LOST || status == OpportunityStatus.CLOSED_WON){
@@ -102,13 +114,4 @@ public class Opportunity {
             return false;
         }
     }
-
-    public boolean close(){
-        return true;
-    }
-    public void lookUp(){
-
-    }
-
-
 }

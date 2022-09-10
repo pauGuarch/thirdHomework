@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+//@Embeddable
 public class Account {
 
     @Id
@@ -21,7 +22,7 @@ public class Account {
     private String country;
     @OneToMany(mappedBy = "accountContact")
     private List<Contact> contactList;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Opportunity> opportunityList;
 
 

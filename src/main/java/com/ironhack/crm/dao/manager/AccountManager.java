@@ -6,6 +6,6 @@ import java.util.UUID;
 public interface AccountManager {
     void createAccount(Account account);
     List<Account> checkAccounts();
-
-    List<Account> deleteAccount(UUID id);
+    Account getAccount(Integer id);
+    //List<Account> deleteAccount(UUID id);
 }

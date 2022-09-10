@@ -32,6 +32,10 @@ public class Contact {
         this.companyName = companyName;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public UUID getUuid() {
         return uuid;
     }

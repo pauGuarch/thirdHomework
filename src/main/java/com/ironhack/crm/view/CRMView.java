@@ -1,19 +1,19 @@
 package com.ironhack.crm.view;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 public class CRMView {
     private String text;
 
     public CRMView() {
     }
-
     public void showMenu(String menu) throws IOException {
         setText(readMenu(menu));
         printMenu();

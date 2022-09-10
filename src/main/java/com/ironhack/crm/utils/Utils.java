@@ -3,6 +3,7 @@ package com.ironhack.crm.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
 
 import java.io.*;
@@ -35,6 +36,30 @@ public class Utils {
             return id;
         }
 
+    }
+
+    public static boolean validateNewAccountCommand(String command){
+        boolean isCommand= false;
+        try {
+            if(command.substring(0, 3).equalsIgnoreCase("new")){
+               isCommand = true;
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("");
+        }
+        return isCommand;
+    }
+
+    public static boolean validateSelectAccountCommand(String command){
+        boolean isCommand= false;
+        try {
+            if(command.equalsIgnoreCase("select")){
+               isCommand = true;
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("error sselect");
+        }
+        return isCommand;
     }
 
     //Returns the number introduced by the customer within the command. If command is not valid returns 0.
@@ -209,6 +234,23 @@ public class Utils {
         }
     }
 
+    //TODO ponerlo bonito
+    public static void showSalesReps(List<SalesRep> salesRepList) {
+        StringBuilder salesReps = new StringBuilder();
+        String id = "ID";
+        String name = "NAME";
+        System.out.format("%-43s %-24s \n"+"-".repeat(50)+"\n", id, name);
+        //System.out.println("ID   -   UUID    -    Name");
+        //for (SalesRep salesRep : salesRepList) {
+            //System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
+
+        for (int i = 0; i < salesRepList.size(); i++) {
+
+            System.out.format("%-42s %-30s \n", salesRepList.get(i).getId(), salesRepList.get(i).getName());
+
+        }
+    }
+
     public static void showProducts(List<Product> products) {
         StringBuilder product = new StringBuilder();
         String id = "ID";
@@ -234,7 +276,7 @@ public class Utils {
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id,
                 name, company, email, phoneNumber);
         for (int i = 0; i < leads.size(); i++) {
-            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getUuid().toString(), leads.get(i).getName(),
+            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getId().toString(), leads.get(i).getName(),
                     leads.get(i).getCompanyName(), leads.get(i).getEmail(), leads.get(i).getPhoneNumber());
         }
     }
@@ -250,4 +292,15 @@ public class Utils {
         System.out.format("%-40s %-27s %-25s %-25s %-12s \n", lead.getUuid().toString(), lead.getName(),
                     lead.getCompanyName(), lead.getEmail(), lead.getPhoneNumber());
     }
+
+    public static void showSalesRepsAndStatus(SalesRep salesRep, int status, Long count) {
+        System.out.println("\nThe SalesRep " + salesRep.getName() + " have " + count + " Opportunities with the status " + OpportunityStatus.values()[status] + "\n");
+    }
+    /*
+    public static void showSalesRepsByOpportunity(Long opportunities, int status) {
+        System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());
+        System.out.println(" SalesRep " + getSalesRepId);
+    }*/
+
+
 }

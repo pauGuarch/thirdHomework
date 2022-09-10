@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface SalesRepManager {
     void createNewSalesRep(SalesRep salesRep);
-    List<SalesRep> removeSalesRep(UUID uuid);
+    List<SalesRep> removeSalesRep(Integer id);
 
-    SalesRep lookUpSalesRep(UUID uuid);
+    SalesRep lookUpSalesRep(Integer id);
 }
