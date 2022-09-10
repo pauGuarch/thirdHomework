@@ -46,4 +46,9 @@ public class LeadManagerImpl implements LeadManager {
         checkLeads();
         return leads;
     }
+
+    @Override
+    public List<Lead> getLeadsBySalesRep(Integer id) {
+        return leadRepository.findLeadBySalesRepId(id);
+    }
 }

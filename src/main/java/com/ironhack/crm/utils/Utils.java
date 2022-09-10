@@ -276,7 +276,7 @@ public class Utils {
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id,
                 name, company, email, phoneNumber);
         for (int i = 0; i < leads.size(); i++) {
-            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getUuid().toString(), leads.get(i).getName(),
+            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getId().toString(), leads.get(i).getName(),
                     leads.get(i).getCompanyName(), leads.get(i).getEmail(), leads.get(i).getPhoneNumber());
         }
     }

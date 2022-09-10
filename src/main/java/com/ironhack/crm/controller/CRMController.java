@@ -50,7 +50,7 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") &&!key.equals("report opportunity by salesrep")
+                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") && !key.equals("report leads by salesrep")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -72,7 +72,11 @@
                                     System.out.println("\n!! Lead created successfully !!\n");
                                     option = "menu-options";
                                     break;
-
+                                case "report leads by salesrep":
+                                    System.out.println("\nYou are about to get a lead by its salesrep.\n");
+                                    Utils.showLeads(crm.getLeadBySalesrep(UtilsUserInputs.getGetSalesRepId()));
+                                    option = "menu-options";
+                                    break;
                                 case "lookup lead":
                                     Utils.showLead(crm.lookUpLead(Integer.parseInt(UtilsUserInputs.getLeadIdInput())));
                                     option = "menu-options";

@@ -52,6 +52,9 @@ public class CRM {
     public SalesRep lookUpSalesRep(Integer id){
         return salesRepManagerImpl.lookUpSalesRep(id);
     }
+    public List<Lead> getLeadBySalesrep(Integer id){
+        return leadManager.getLeadsBySalesRep(id);
+    }
 
     public List<Account> checkAccounts(){
         return accountManager.checkAccounts();
