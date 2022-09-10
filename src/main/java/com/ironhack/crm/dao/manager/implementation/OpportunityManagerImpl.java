@@ -54,6 +54,14 @@ public class OpportunityManagerImpl implements OpportunityManager {
     public Long countBySalesRepIdAndStatus(Integer salesRepId, int status){
         return opportunityRepository.countBySalesRepIdAndStatus(salesRepId, OpportunityStatus.values()[status]);
     }
+
+    public Long getMeanQuantity() {
+        return opportunityRepository.meanQuantity();
+    }
+
+    public Long getMaxQuantity() {
+        return opportunityRepository.;
+    }
     /*
     @Override
     public List<Opportunity> removeOpportunity(Integer id) {

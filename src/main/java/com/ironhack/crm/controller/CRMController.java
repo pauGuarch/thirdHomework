@@ -1,6 +1,5 @@
     package com.ironhack.crm.controller;
 
-    import com.ironhack.crm.dao.manager.implementation.AccountManagerImpl;
     import com.ironhack.crm.domain.classes.CRM;
     import com.ironhack.crm.utils.Utils;
     import com.ironhack.crm.utils.UtilsUserInputs;
@@ -50,7 +49,8 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep")
+                                    && !key.equals("report close-lost by salesrep") && !key.equals("mean quantity")
+                                    && !key.equals("report open by salesrep")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -121,6 +121,14 @@
                                 case "report open by salesrep":
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
+                                    option = "menu-options";
+                                break;
+                                case "mean quantity":
+                                    Utils.showQuantityCount(crm.meanQuantity(), "Mean");
+                                    option = "menu-options";
+                                break;
+                                case "max quantity":
+                                    Utils.showQuantityCount(crm.maxQuantity(), "Mean");
                                     option = "menu-options";
                                 break;
                             default:
