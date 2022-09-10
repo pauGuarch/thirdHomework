@@ -1,5 +1,6 @@
 package com.ironhack.crm.domain.classes;
 
+import com.ironhack.crm.dao.manager.AccountManager;
 import com.ironhack.crm.dao.manager.implementation.*;
 import com.ironhack.crm.dao.repositories.AccountRepository;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
@@ -51,9 +52,6 @@ public class CRM {
 
     public SalesRep lookUpSalesRep(Integer id){
         return salesRepManagerImpl.lookUpSalesRep(id);
-    }
-    public List<Lead> getLeadBySalesrep(Integer id){
-        return leadManager.getLeadsBySalesRep(id);
     }
 
     public List<Account> checkAccounts(){
@@ -125,10 +123,6 @@ public class CRM {
         return opportunityManager.checkOpportunities();
     }
 
-    public List<Opportunity> getOpportunitiesBySalesRep(Integer id) {
-        return opportunityManager.getOpportunitiesBySalesRep(id);
-    }
-
     public Opportunity lookUpOpportunity(Integer id){
         return opportunityManager.lookUpOpportunity(id);
     }
@@ -149,4 +143,13 @@ public class CRM {
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
 
+    public Long getAccountsEmployeesMean(){
+        return accountManager.getAccountsEmployeesMean();
+    }
+    public Long getAccountsEmployeesMax(){
+        return accountManager.getAccountsEmployeesMax();
+    }
+    public Long getAccountsEmployeesMin(){
+        return accountManager.getAccountsEmployeesMin();
+    }
 }

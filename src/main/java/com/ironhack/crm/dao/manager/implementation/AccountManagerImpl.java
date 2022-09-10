@@ -36,7 +36,9 @@ public class AccountManagerImpl implements AccountManager {
     public Account getAccount(Integer id){
         return accountRepository.findById(id).get();
     }
-
+    public Long getAccountsEmployeesMean() {return accountRepository.getAccountEmployeesAverage();}
+    public Long getAccountsEmployeesMax() {return accountRepository.getAccountEmployeesMax();}
+    public Long getAccountsEmployeesMin() {return accountRepository.getAccountEmployeesMin();}
 
     /*
     @Override

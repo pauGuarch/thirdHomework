@@ -16,6 +16,7 @@
         private CRMView crmView;
         @Autowired
         private CRM crm;
+        private Long count;
 
         public void runCRM() {
             initializeCRM();
@@ -50,7 +51,8 @@
                             while (!key.equals("new lead") && !key.equals("lookup lead") && !key.equals("show leads") && !key.equals("convert")
                                     && !key.equals("show opportunities") && !key.equals("close-won")&& !key.equals("new salesrep")
                                     && !key.equals("show salesreps") && !key.equals("close-lost")  && !key.equals("report close-won by salesrep")
-                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") && !key.equals("report leads by salesrep")
+                                    && !key.equals("report close-lost by salesrep")  && !key.equals("report open by salesrep") &&
+                                    !key.equals("mean employee count") && !key.equals("max employee count") && !key.equals("min employee count")
                                     && !key.equals("EXIT") && !key.equals("BACK")) {
                                 System.out.println("Please insert a valid command:");
                                 key = new Scanner(System.in).nextLine();
@@ -72,11 +74,7 @@
                                     System.out.println("\n!! Lead created successfully !!\n");
                                     option = "menu-options";
                                     break;
-                                case "report leads by salesrep":
-                                    System.out.println("\nYou are about to get a lead by its salesrep.\n");
-                                    Utils.showLeads(crm.getLeadBySalesrep(UtilsUserInputs.getGetSalesRepId()));
-                                    option = "menu-options";
-                                    break;
+
                                 case "lookup lead":
                                     Utils.showLead(crm.lookUpLead(Integer.parseInt(UtilsUserInputs.getLeadIdInput())));
                                     option = "menu-options";
@@ -127,13 +125,26 @@
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
                                     option = "menu-options";
                                     break;
-                                case "report opportunity by salesrep":
-                                    System.out.println("\nYou are about to get a opportunities by its SalesRep");
-                                    Utils.showOpportunities(crm.getOpportunitiesBySalesRep(UtilsUserInputs.getGetSalesRepId()));
+                                    case "mean employee count":
+                                        count = crm.getAccountsEmployeesMean();
+                                        System.out.println("\nThe mean of employees in all the accounts is: ");
+                                        System.out.println(count);
+                                    option = "menu-options";
+                                break;
+                                case "max employee count":
+                                        count = crm.getAccountsEmployeesMax();
+                                        System.out.println("\nThe maximum of employees in all the accounts is: ");
+                                        System.out.println(count);
+                                    option = "menu-options";
+                                break;
+                                case "min employee count":
+                                        count = crm.getAccountsEmployeesMin();
+                                        System.out.println("\nThe minimum of employees in all the accounts is: ");
+                                        System.out.println(count);
                                     option = "menu-options";
                                 break;
 
-                                default:
+                            default:
                                 option = key;
                             }
                             clearConsole();
