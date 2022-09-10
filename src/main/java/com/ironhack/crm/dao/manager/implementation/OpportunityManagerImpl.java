@@ -54,6 +54,11 @@ public class OpportunityManagerImpl implements OpportunityManager {
     public Long countBySalesRepIdAndStatus(Integer salesRepId, int status){
         return opportunityRepository.countBySalesRepIdAndStatus(salesRepId, OpportunityStatus.values()[status]);
     }
+
+    @Override
+    public List<Opportunity> getOpportunitiesBySalesRep(Integer id) {
+        return opportunityRepository.findOpportunityBySalesRepId(id);
+    }
     /*
     @Override
     public List<Opportunity> removeOpportunity(Integer id) {
@@ -61,5 +66,6 @@ public class OpportunityManagerImpl implements OpportunityManager {
         checkOpportunities();
         return opportunities;
     }*/
+
 
 }
