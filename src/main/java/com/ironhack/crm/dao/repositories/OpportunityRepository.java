@@ -13,4 +13,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
     Opportunity findByUuid(UUID opportunityId);
 
     Long countBySalesRepIdAndStatus(Integer salesRepId, OpportunityStatus status);
+
+    List<Opportunity> findOpportunityBySalesRepId(Integer id);
 }
+

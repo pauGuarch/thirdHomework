@@ -126,8 +126,14 @@
                                     salesRepId = UtilsUserInputs.getGetSalesRepId();
                                     Utils.showSalesRepsAndStatus(crm.lookUpSalesRep(salesRepId),0 ,crm.countByStatusAndSalesRep(salesRepId, 0));
                                     option = "menu-options";
+                                    break;
+                                case "report opportunity by salesrep":
+                                    System.out.println("\nYou are about to get a opportunities by its SalesRep");
+                                    Utils.showOpportunities(crm.getOpportunitiesBySalesRep(UtilsUserInputs.getGetSalesRepId()));
+                                    option = "menu-options";
                                 break;
-                            default:
+
+                                default:
                                 option = key;
                             }
                             clearConsole();
