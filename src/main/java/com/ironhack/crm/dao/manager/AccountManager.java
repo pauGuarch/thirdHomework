@@ -8,4 +8,5 @@ public interface AccountManager {
     List<Account> checkAccounts();
     Account getAccount(Integer id);
     //List<Account> deleteAccount(UUID id);
+    Long getAccountsEmployeesMean();
 }

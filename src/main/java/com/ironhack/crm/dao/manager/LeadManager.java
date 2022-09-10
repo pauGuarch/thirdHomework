@@ -10,4 +10,5 @@ public interface LeadManager {
     List<Lead> checkLeads();
     Lead lookUpLead(Integer leadId);
     List<Lead> removeLead(Integer leadId);
+    List<Lead> getLeadsBySalesRep(Integer id);
 }

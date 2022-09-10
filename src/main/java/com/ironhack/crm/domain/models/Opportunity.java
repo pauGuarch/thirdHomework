@@ -59,7 +59,7 @@ public class Opportunity {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) throws IntegerException {
+    public void setQuantity() throws IntegerException {
         if(quantity > 0){
             this.quantity = quantity;
         }else {
@@ -114,16 +114,4 @@ public class Opportunity {
             return false;
         }
     }
-
-
-
-
-    public boolean close(){
-        return true;
-    }
-    public void lookUp(){
-
-    }
-
-
 }

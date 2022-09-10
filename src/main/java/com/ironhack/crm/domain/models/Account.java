@@ -25,7 +25,6 @@ public class Account {
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Opportunity> opportunityList;
 
-
     public Account() {
     }
 
@@ -97,6 +96,7 @@ public class Account {
         }else {
             throw new EmptyStringException();
         }
+
     }
 
     public List<Contact> getContactList() {

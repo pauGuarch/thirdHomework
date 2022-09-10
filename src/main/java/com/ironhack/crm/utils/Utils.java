@@ -236,10 +236,18 @@ public class Utils {
 
     //TODO ponerlo bonito
     public static void showSalesReps(List<SalesRep> salesRepList) {
+        StringBuilder salesReps = new StringBuilder();
+        String id = "ID";
+        String name = "NAME";
+        System.out.format("%-43s %-24s \n"+"-".repeat(50)+"\n", id, name);
+        //System.out.println("ID   -   UUID    -    Name");
+        //for (SalesRep salesRep : salesRepList) {
+            //System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
 
-        System.out.println("ID   -   UUID    -    Name");
-        for (SalesRep salesRep : salesRepList) {
-            System.out.println(salesRep.getId() + "     " + salesRep.getUuid()+ "     " + salesRep.getName());
+        for (int i = 0; i < salesRepList.size(); i++) {
+
+            System.out.format("%-42s %-30s \n", salesRepList.get(i).getId(), salesRepList.get(i).getName());
+
         }
     }
 
@@ -268,7 +276,7 @@ public class Utils {
         System.out.format("%s%43s%31s%24s%32s \n"+"-".repeat(142)+"\n", id,
                 name, company, email, phoneNumber);
         for (int i = 0; i < leads.size(); i++) {
-            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getUuid().toString(), leads.get(i).getName(),
+            System.out.format("%-40s %-27s %-25s %-25s %-12s \n", leads.get(i).getId().toString(), leads.get(i).getName(),
                     leads.get(i).getCompanyName(), leads.get(i).getEmail(), leads.get(i).getPhoneNumber());
         }
     }
@@ -305,10 +313,15 @@ public class Utils {
         System.out.println("\n The product " + productName + " have " + countOpen + " opportunities with OPEN status");
     }
 
+    public static void showQuantityCount(Long quantity, String request) {
+        System.out.println("\nThe " + request + " quantity of products is " + quantity + "\n");
+    }
 
     /*
     public static void showSalesRepsByOpportunity(Long opportunities, int status) {
         System.out.println("These are all the Opportunities with the status " + OpportunityStatus.values()[status] + " Assigned to the SalesRep: " + salesrep.getName());
         System.out.println(" SalesRep " + getSalesRepId);
     }*/
+
+
 }

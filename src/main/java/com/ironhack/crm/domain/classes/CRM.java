@@ -1,5 +1,6 @@
 package com.ironhack.crm.domain.classes;
 
+import com.ironhack.crm.dao.manager.AccountManager;
 import com.ironhack.crm.dao.manager.implementation.*;
 import com.ironhack.crm.domain.enums.OpportunityStatus;
 import com.ironhack.crm.domain.models.*;
@@ -139,6 +140,26 @@ public class CRM {
     //public List<Opportunity> getStatusBySalesRep(Integer salesRepId, int status) { return opportunityManager.getStatusBySalesRep(salesRepId, status);
     public Long countByStatusAndSalesRep(Integer salesRepId, int status) { return opportunityManager.countBySalesRepIdAndStatus(salesRepId, status);
     }
+    
+    public Long meanQuantity() {
+        return opportunityManager.getMeanQuantity();
+    }
+
+    public Long maxQuantity() {
+        return opportunityManager.getMaxQuantity();
+    }
+
+    public Long minQuantity() {
+        return opportunityManager.getMinQuantity();
+
+    public Long getAccountsEmployeesMean(){
+        return accountManager.getAccountsEmployeesMean();
+    }
+    public Long getAccountsEmployeesMax(){
+        return accountManager.getAccountsEmployeesMax();
+    }
+    public Long getAccountsEmployeesMin(){
+        return accountManager.getAccountsEmployeesMin();
 
     public Long getOpportunitiesByProductName(String product) {
         return opportunityManager.countOpportunitiesByProductName(product);
@@ -146,7 +167,6 @@ public class CRM {
 
 
     public Long countOpportunitiesByStatusAndProductName(OpportunityStatus status, String productName) {
-
         return opportunityManager.countOpportunitiesByStatusAndProductName(status, productName);
     }
 }
